@@ -1,0 +1,1 @@
+-- naa bay table ang bmi calc? murag wala na man diba kay function ra man ata ni sya
