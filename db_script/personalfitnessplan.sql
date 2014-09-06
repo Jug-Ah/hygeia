@@ -1,41 +1,39 @@
 create table personalfitnessplan (
-    userID int primary key,
-    personaldietplan text,
-    personalexerciseplan text
+    userId int primary key,
+    personalDietPlan text,
+    personalExercisePlan text
 );
 
 create or replace 
-    function setpersonalfitnessplan(p_id int, p_personaldietplan text, p_personalexerciseplan text)
+    function set_personalfitnessplan(p_userId int, p_personalDietPlan text, p_personalExercisePlan text)
     returns text as
 $$
   declare
     v_id int;
   begin
-      select into v_id userID from personalfitnessplan
-        where userID = p_id;
+      select into v_id userId from personalfitnessplan
+        where userId = p_userId;
 
       if v_id isnull then
-          insert into personalfitnessplan(userID, personaldietplan, personalexerciseplan) values
-              (p_id, p_personaldietplan, p_personalexerciseplan);
+          insert into personalfitnessplan(userId, personalDietPlan, personalExercisePlan) values
+              (p_userId, p_personalDietPlan, p_personalExercisePlan);
       else
           update personalfitnessplan
-            set personaldietplan = p_personaldietplan, personalexerciseplan = p_personalexerciseplan
-            where userID = p_id;
+            set personalDietPlan = p_personalDietPlan, personalExercisePlan = p_personalExercisePlan
+            where userId = p_userId;
       end if;
 
       return 'OK';
   end;
 $$
   language 'plpgsql';
---how to use:
 
 
 create or replace function
-    get_personalfitnessplan_perid(in text, out text, in text, out text)
+    get_personalfitnessplan(in text, out text, in text, out text)
     returns setof record as
 $$
-     select userID, personaldietplan, personalexerciseplan from personalfitnessplan
-     where userID = $1;
+     select userId, personalDietPlan, personalExercisePlan from personalfitnessplan
+     where userId = $1;
 $$
   language 'sql';
---how to use:
