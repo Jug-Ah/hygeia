@@ -1,9 +1,16 @@
+<<<<<<< HEAD
 from dosql import *
 import cgi
 try:
     import json
 except ImportError:
     import simplejson as json
+=======
+from dosql_g import *
+import cgi
+import simplejson as json
+
+>>>>>>> 15afc79a86b6634998fefb6b4e4d858c813b9775
 
 def index(req, id):
     id = cgi.escape(id)
