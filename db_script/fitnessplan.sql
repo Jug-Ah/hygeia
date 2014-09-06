@@ -1,10 +1,10 @@
 create table fitnessplan(
   gender text,
   ageBracket text,
-  healthBracket text,
+  healthStatus text,
   exercisePlan text,
   dietPlan text,
-  constraint fitnessPlanPk primary key(gender, ageBracket, healthBracket)
+  constraint fitnessPlanPk primary key(gender, ageBracket, healthStatus)
 );
 
 -- shortcuts used on plans
@@ -12,7 +12,7 @@ create table fitnessplan(
 -- a=teen, b=young_adult, c=adult
 -- x=underweight, y=normal, z=overweight
 
-insert into fitnessplan(gender, ageBracket, healthBracket, exercisePlan, dietPlan)
+insert into fitnessplan(gender, ageBracket, healthStatus, exercisePlan, dietPlan)
    values ('male', 'teen', 'underweight', 'exercise_plan_1ax', 'diet_plan_1ax'),
    values ('male', 'teen', 'normal', 'exercise_plan_1ay', 'diet_plan_1ay'),
    values ('male', 'teen', 'overweight', 'exercise_plan_1az', 'diet_plan_1az'),
@@ -38,7 +38,7 @@ create or replace function get_fitnessplan(in text, in text, in text, out text, 
     returns setof record as
 $$
        select exercisePlan, dietPlan from fitnessplan
-       where gender = $1 and ageBracket = $2 and healthBracket = $3;
+       where gender = $1 and ageBracket = $2 and healthStatus = $3;
 $$
    language 'sql';
 
