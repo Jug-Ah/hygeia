@@ -13,24 +13,24 @@ create table fitnessplan(
 -- x=underweight, y=normal, z=overweight
 
 insert into fitnessplan(gender, ageBracket, healthStatus, exercisePlan, dietPlan)
-   values ('male', 'teen', 'underweight', 'exercise_plan_1ax', 'diet_plan_1ax'),
-   values ('male', 'teen', 'normal', 'exercise_plan_1ay', 'diet_plan_1ay'),
-   values ('male', 'teen', 'overweight', 'exercise_plan_1az', 'diet_plan_1az'),
-   values ('female', 'teen', 'underweight', 'exercise_plan_2ax', 'diet_plan_2ax'),
-   values ('female', 'teen', 'normal', 'exercise_plan_2ay', 'diet_plan_2ay'),
-   values ('female', 'teen', 'overweight', 'exercise_plan_2az', 'diet_plan_2az'),
-   values ('male', 'young_adult', 'underweight', 'exercise_plan_1bx', 'diet_plan_1bx'),
-   values ('male', 'young_adult', 'normal', 'exercise_plan_1by', 'diet_plan_1bz'),
-   values ('male', 'young_adult', 'overweight', 'exercise_plan_1bz', 'diet_plan_1bz'),
-   values ('female', 'young_adult', 'underweight', 'exercise_plan_2bx', 'diet_plan_2bx'),
-   values ('female', 'young_adult', 'normal', 'exercise_plan_2by', 'diet_plan_2by'),
-   values ('female', 'young_adult', 'overweight', 'exercise_plan_2bz', 'diet_plan_2bz'),
-   values ('male', 'adult', 'underweight', 'exercise_plan_1cx', 'diet_plan_1cx'),
-   values ('male', 'adult', 'normal', 'exercise_plan_1cy', 'diet_plan_1cy'),
-   values ('male', 'adult', 'overweight', 'exercise_plan_1cz', 'diet_plan_1cz'),
-   values ('female', 'adult', 'underweight', 'exercise_plan_2cx', 'diet_plan_2cx'),
-   values ('female', 'adult', 'normal', 'exercise_plan_2cy', 'diet_plan_2cy'),
-   values ('female', 'adult', 'overweight', 'exercise_plan_2cz', 'diet_plan_2cz');
+   values ('male', 'teen', 'underweight', 'exercise plan 1ax', 'diet plan 1ax'),
+   ('male', 'teen', 'normal', 'exercise plan 1ay', 'diet plan 1ay'),
+   ('male', 'teen', 'overweight', 'exercise plan 1az', 'diet plan 1az'),
+   ('female', 'teen', 'underweight', 'exercise plan 2ax', 'diet plan 2ax'),
+   ('female', 'teen', 'normal', 'exercise plan 2ay', 'diet plan 2ay'),
+   ('female', 'teen', 'overweight', 'exercise plan 2az', 'diet plan 2az'),
+   ('male', 'young_adult', 'underweight', 'exercise plan 1bx', 'diet plan 1bx'),
+   ('male', 'young_adult', 'normal', 'exercise plan 1by', 'diet plan 1bz'),
+   ('male', 'young_adult', 'overweight', 'exercise plan 1bz', 'diet plan 1bz'),
+   ('female', 'young_adult', 'underweight', 'exercise plan 2bx', 'diet plan 2bx'),
+   ('female', 'young_adult', 'normal', 'exercise plan 2by', 'diet plan 2by'),
+   ('female', 'young_adult', 'overweight', 'exercise plan 2bz', 'diet plan 2bz'),
+   ('male', 'adult', 'underweight', 'exercise plan 1cx', 'diet plan 1cx'),
+   ('male', 'adult', 'normal', 'exercise plan 1cy', 'diet plan 1cy'),
+   ('male', 'adult', 'overweight', 'exercise plan 1cz', 'diet plan 1cz'),
+   ('female', 'adult', 'underweight', 'exercise_plan_2cx', 'diet plan 2cx'),
+   ('female', 'adult', 'normal', 'exercise plan 2cy', 'diet plan 2cy'),
+   ('female', 'adult', 'overweight', 'exercise plan 2cz', 'diet plan 2cz');
 
   
 -- function for getting plans from the table using primary key
