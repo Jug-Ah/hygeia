@@ -1,22 +1,17 @@
 create table useraccount (     
-     userId int primary key,
-     username text
-     password text
+     userId int auto_increment primary key,
+     username text,
+     userpass text
 );
 
 create or replace 
-	function set_useraccount(p_userId int, p_username text, p_password text)
+	function set_useraccount(p_username text, p_userpass text)
 	returns text as
 	
 $$
-   declare
-      v_id int;
    begin
-      select into v_id ID from useraccount
-	     where ID = p_id;
-      if v_id isnull then
-	     insert into useraccount(userId, username, password) values
-		    (p_userId, p_username, p_password);
+	     insert into useraccount(username, userpass) values
+		    (p_username, p_userpass);
       end if;
       return 'success!';
    end;

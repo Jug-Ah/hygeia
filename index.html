@@ -1,11 +1,47 @@
+
 <html>
-	<head>
-		<script src="javascript/jquery.js"> </script>
-        <script src="javascript/globs_g.js"> </script>
-        <script src="javascript/jqinit.js"> </script>
-	</head>	
-	<body>
-		<div id="target">
-        </div>
-	</body>
+   <head>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+	    <script src="javascript/jquery.js"></script>
+        <script src="javascript/bootstrap.min.js"></script>
+        <script src="javascript/jqinit.js"></script>
+		<script src="javascript/globs_g.js"></script>
+   </head>
+   <body>
+       <table>
+			   <thead>
+			     <tr>
+				    <th><p>&nbsp;</p>&nbsp;Login</th>
+			     </tr>
+			   </thead>
+			   <tbody>
+			     <tr>
+					<td>&nbsp;<input type="text" id="username"> </td>
+			     </tr>
+				 <tr>
+					<td><br>&nbsp;<input type="password" id="password"> </td>
+				 </tr>
+			   </tbody>
+		</table>
+	   <p> </p>
+	   &nbsp;
+	   <button    
+	            class="btn btn-success btn-mini"
+	            onclick="addUser();">
+				Register
+	   </button>
+	   <table>
+			   <thead>
+			     <tr>
+				    <th><p>&nbsp;</p>&nbsp;Answer</th>
+			     </tr>
+			   </thead>
+			   <tbody>
+			     <tr>
+					<td><p></p><p id = "target"> </p> </td>
+			     </tr>
+			   </tbody>
+	   </table>  
+   </body>
 </html>
