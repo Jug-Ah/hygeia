@@ -1,0 +1,35 @@
+<html>
+   <head>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+		<script src="javascript/jquery.js"></script>
+        <script src="javascript/bootstrap.min.js"></script>
+		<script src="javascript/globs_j.js"></script>
+        <script src="javascript/jqinit.js"></script>
+   </head>
+   <body>
+       <table>
+			   <thead>
+			     <tr>
+				    <th>Gender</th>
+					<th>Age Bracket</th>
+					<th>Health Status</th>
+				 </tr>
+			   </thead>
+			   <tbody>
+			     <tr>
+					<td> <input type="text" id="gender"> </td>
+					<td> <input type="text" id="ageBracket"> </td>
+					<td> <input type="text" id="healthStatus"> </td>
+			     </tr>
+			   </tbody>
+		</table>
+	   <div id="target">
+       </div>
+	   <button    
+	            class="btn btn-success btn-mini"
+	            onclick="fetchfitnessplan_bykey();">
+				Load..
+	   </button>
+   </body>
+</html>
