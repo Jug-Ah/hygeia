@@ -1,4 +1,0 @@
-hygeia
-======
-
-Classified information
