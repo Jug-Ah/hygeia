@@ -6,8 +6,11 @@
         <script src="javascript/bootstrap.min.js"></script>
 		<script src="javascript/globs_j.js"></script>
         <script src="javascript/jqinit.js"></script>
+		<title>Get Fitness Plan</title>
    </head>
    <body>
+	   <h1>Get Fitness Plan</h1>
+	   <p>#IHopeYoureHappy</p>
        <table>
 			   <thead>
 			     <tr>
@@ -18,9 +21,20 @@
 			   </thead>
 			   <tbody>
 			     <tr>
-					<td> <input type="text" id="gender"> </td>
-					<td> <input type="text" id="ageBracket"> </td>
-					<td> <input type="text" id="healthStatus"> </td>
+					<td> <select class="gender" name="gender" id="gender">
+							<option value="male" selected="selected">Male</option>
+							<option value="female">Female</option>
+					</select> </td>
+					<td> <select class="ageBracket" name="ageBracket" id="ageBracket">
+							<option value="teen" selected="selected">Teen</option>
+							<option value="young adult">Young Adult</option>
+							<option value="adult">Adult</option>
+					</select> </td>
+					<td> <select class="healthStatus" name="healthStatus" id="healthStatus">
+							<option value="underweight" selected="selected">Underweight</option>
+							<option value="normal">Normal</option>
+							<option value="overweight">Overweight</option>
+					</select> </td>
 			     </tr>
 			   </tbody>
 		</table>
