@@ -22,7 +22,7 @@ $$
       where ID = p_id;
 
     if v_id isnull then
-      insert into personalinfo(userId, fullName, birthday, age, gender, height, weight, bmi, healthStatus)
+      insert into personalinfo(userId, fullName, birthday, age, gender, height, weight, bmi, healthStatus) values
         (p_userId, p_fullName, p_birthday, p_age, p_gender, p_height, p_weight, p_bmi, p_healthStatus);
     else
 

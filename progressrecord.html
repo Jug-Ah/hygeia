@@ -1,0 +1,51 @@
+
+<html>
+   <head>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+	    <script src="javascript/jquery.js"></script>
+        <script src="javascript/bootstrap.min.js"></script>
+        <script src="javascript/jqinit.js"></script>
+		<script src="javascript/globs_g.js"></script>
+		<title>Progress Record</title>
+   </head>
+   <body>
+	   <h1>Your Record</h1>
+       <table>
+			   <thead>
+			     <tr>
+				    <th>Week</th>
+					<th>Height</th>
+					<th>&nbsp;&nbsp;&nbsp;Weight</th>
+					<th>&nbsp;&nbsp;&nbsp;Age</th>
+				 </tr>
+			   </thead>
+			   <tbody>
+			     <tr>
+					<td>Week 0 &nbsp;&nbsp;&nbsp;&nbsp; </td> 
+					<td> <input type="float" id="height" placeholder="Height"> </td>
+					<td> &nbsp;&nbsp; <input type="float" id="weight" placeholder="Weight">  </td>
+					<td> &nbsp;&nbsp; <input type="int" id="age" placeholder="Age"> </td>
+					<td> &nbsp;&nbsp; <button class="btn btn-success btn-mini" onclick="addprogressrecord(3);">
+				Update
+	   </button> </td>
+			     </tr>
+			   </tbody>
+		</table>
+	   <p> </p>
+	   &nbsp;
+	   
+	   <table>
+			   <thead>
+			     <tr>
+				    <th></th>
+			     </tr>
+			   </thead>
+			   <tbody>
+			     <tr>
+					<td><p></p><p id = "target"> </p> </td>
+			     </tr>
+			   </tbody>
+	   </table>  
+   </body>
+</html>

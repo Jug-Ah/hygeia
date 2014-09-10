@@ -1,12 +1,13 @@
 //define functions and global variables here...
 var siteloc = "http://localhost/iGit";
-var scriptloc = "/scripts/"
+var scriptloc = "/scripts/";
+var x = 1;
 
-function fetchprogresshistory(id)
+function fetchprogresshistoryof()
 {
   $.ajax({
-      url: siteloc + scriptloc + "getproghist.py",
-      data: {id:id},
+      url: siteloc + scriptloc + "getprogrec.py",
+      data: {userID:x},
       dataType: 'json',
       success: function (res) {
                   console.log(res);
@@ -30,3 +31,17 @@ function fetchprogresshistory(id)
     });
 }
 
+function addprogressrecord(id)
+{
+  $.ajax({
+      url: siteloc + scriptloc + "setprogrec.py",
+      data: {userID:id, 
+			height:$("#height").val(), 
+			weight:$("#weight").val(), 
+			age:$("#age").val()},
+      dataType: 'json',
+      success: function (res) {
+                  console.log("Successfully added.");
+              }
+    });
+}

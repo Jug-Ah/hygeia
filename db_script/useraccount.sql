@@ -1,5 +1,5 @@
 create table useraccount (     
-     userId int auto_increment primary key,
+     userId serial primary key,
      username text,
      userpass text
 );
@@ -12,7 +12,6 @@ $$
    begin
 	     insert into useraccount(username, userpass) values
 		    (p_username, p_userpass);
-      end if;
       return 'success!';
    end;
    

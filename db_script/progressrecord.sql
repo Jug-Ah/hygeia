@@ -1,56 +1,37 @@
-create table progressrecord(
-	userID serial primary key,  --(userId be 'int' soon and will be procured from useraccount.sql table)
-	height int,
-	weight int,
-	bmi double precision,
+create table progressrecord  (
+	progrecID serial primary key,
+	userID int references useraccount(userid),
+	height decimal(5,2),
+	weight decimal(5,2),
+	bmi decimal(4,2),
 	healthStatus text,
 	age int,
-	changePercentage double precision	
+	changePercentage decimal(4,2)	
 );
 
 
 create or replace
-	function set_progressrecord(p_height int, p_weight int, p_bmi double precision, p_healthStatus text, p_age int, p_changePercentage double precision) --(add first parameter 'p_userID int')
+	function set_progressrecord(p_userID int, p_height decimal(5,2), p_weight decimal(5,2), p_bmi decimal(4,2), p_healthStatus text, p_age int, p_changePercentage decimal(4,2))
 	returns text as
 
 $$
-  --declare
-     --v_uid int;
   begin
-     --select into v_uid user_id from progressrecord
-        --where userID = p_uid;
-
-     --if v_uid isnull then
-        insert into progressrecord values
-        (p_height, p_weight, p_bmi, p_healthStatus, p_age, p_changePercentage);  
-		--(add first parameter 'p_userID')
-     --else
-        --update progressrecord
-           --set height = p_height, weight = p_weight, bmi = p_bmi, healthStatus = p_healthStatus, age = p_age, changePercentage = p_changePercentage
-           --where userID = p_userID;
-     --end if;
-
+	 insert into progressrecord(userID, height, weight, bmi, healthStatus, age, changePercentage) values
+	 (p_userID, p_height, p_weight, p_bmi, p_healthStatus, p_age, p_changePercentage);
      return 'OK';
   end;	
 $$
   language 'plpgsql';
-  
---insert into progressrecord values (1, 180, 67, 18.0, 'normal', 18, 0);
---select setprogressrecord(2, 167, 80, 20, 'overweight', 18, 0);  
+
   
 create or replace function
-	get_progressrecord(in int, out int, out int, out double precision, out text, out int, out double precision)
+	get_progressrecord(in int, out decimal(5,2), out decimal(5,2), out decimal(4,2), out text, out int, out decimal(4,2))
 	returns setof record as
 
 $$
-
     select height, weight, bmi, healthStatus, age, changePercentage from progressrecord
     where userID = $1;
-    
 $$
 language 'sql';
 
-
-
---select * from progressrecord where user_id = 1;
---getprogressrecord(2);
+-- ADD A FUNCTION TO EXTRACT PREVIOUS BMI

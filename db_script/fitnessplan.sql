@@ -19,12 +19,12 @@ insert into fitnessplan(gender, ageBracket, healthStatus, exercisePlan, dietPlan
    ('female', 'teen', 'underweight', 'exercise plan 2ax', 'diet plan 2ax'),
    ('female', 'teen', 'normal', 'exercise plan 2ay', 'diet plan 2ay'),
    ('female', 'teen', 'overweight', 'exercise plan 2az', 'diet plan 2az'),
-   ('male', 'young_adult', 'underweight', 'exercise plan 1bx', 'diet plan 1bx'),
-   ('male', 'young_adult', 'normal', 'exercise plan 1by', 'diet plan 1bz'),
-   ('male', 'young_adult', 'overweight', 'exercise plan 1bz', 'diet plan 1bz'),
-   ('female', 'young_adult', 'underweight', 'exercise plan 2bx', 'diet plan 2bx'),
-   ('female', 'young_adult', 'normal', 'exercise plan 2by', 'diet plan 2by'),
-   ('female', 'young_adult', 'overweight', 'exercise plan 2bz', 'diet plan 2bz'),
+   ('male', 'young adult', 'underweight', 'exercise plan 1bx', 'diet plan 1bx'),
+   ('male', 'young adult', 'normal', 'exercise plan 1by', 'diet plan 1bz'),
+   ('male', 'young adult', 'overweight', 'exercise plan 1bz', 'diet plan 1bz'),
+   ('female', 'young adult', 'underweight', 'exercise plan 2bx', 'diet plan 2bx'),
+   ('female', 'young adult', 'normal', 'exercise plan 2by', 'diet plan 2by'),
+   ('female', 'young adult', 'overweight', 'exercise plan 2bz', 'diet plan 2bz'),
    ('male', 'adult', 'underweight', 'exercise plan 1cx', 'diet plan 1cx'),
    ('male', 'adult', 'normal', 'exercise plan 1cy', 'diet plan 1cy'),
    ('male', 'adult', 'overweight', 'exercise plan 1cz', 'diet plan 1cz'),
@@ -34,11 +34,18 @@ insert into fitnessplan(gender, ageBracket, healthStatus, exercisePlan, dietPlan
 
   
 -- function for getting plans from the table using primary key
-create or replace function get_fitnessplan(in text, in text, in text, out text, out text)
+create or replace function get_fitnessplan_bykey(in text, in text, in text, out text, out text)
     returns setof record as
 $$
        select exercisePlan, dietPlan from fitnessplan
        where gender = $1 and ageBracket = $2 and healthStatus = $3;
+$$
+   language 'sql';
+   
+ create or replace function get_fitnessplan()
+    returns setof record as
+$$
+       select * from fitnessplan;
 $$
    language 'sql';
 
