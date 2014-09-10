@@ -11,7 +11,7 @@ $$
   declare
     v_id int;
   begin
-      select into v_id userId from personalfitnessplan
+        select into v_id userId from personalfitnessplan
         where userId = p_userId;
 
       if v_id isnull then
@@ -30,10 +30,10 @@ $$
 
 
 create or replace function
-    get_personalfitnessplan(in text, out text, in text, out text)
+    get_personalfitnessplan(in int, out text, out text)
     returns setof record as
 $$
-     select userId, personalDietPlan, personalExercisePlan from personalfitnessplan
-     where userId = $1;
+    select personalDietPlan, personalExercisePlan from personalfitnessplan
+    where userId = $1;
 $$
   language 'sql';
