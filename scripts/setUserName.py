@@ -1,4 +1,4 @@
-from dosql_g import *
+from dosql import *
 import cgi
 import simplejson as json
 
