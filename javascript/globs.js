@@ -7,37 +7,22 @@ function addUser()
 {
   $.ajax({
       url: siteloc + scriptloc + "setUserName.py",
-      data: {username:$("#login").val(), password:$("#password").val()},
+      data: {username:$("#login").val(), password:$("#password").val(), email:$("#email").val()},
       dataType: 'json',
-      success: function (res) {
+      success: function (res) {			
 			var newContent = '<div class="ui-widget"><div class="ui-state-highlight ui-corner-all">  <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>  <strong>Successfully Registered!</strong></p></div></div>';
 			$("#message").html(newContent);
 			//window.location.replace("http://pageAfterRegister.com");			
 			console.log("Successfully registered");
-				  
-                  
+			$("#form-signin")[0].reset();
+			                  
               }
     });
 	
   
 }
 
-$("#square").click(function(){    
-			if($.isNumeric($("#number").val())) { <!-- Checks if input is numeric -->
-				var res = $("#number").val() * $("#number").val()  <!-- Doubles the input -->
-				
-				
-				var newContent = '<div class="ui-widget"><div class="ui-state-highlight ui-corner-all">  <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>  <strong>Result: ' + res + '</strong></p></div></div>';
-				$("#message").html(newContent);
-				
-			}			
-			else {
-				
-				var newContent = '<div class="ui-widget"><div class="ui-state-error ui-corner-all"><p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span><strong>Error:</strong> Only integer values are accepted.</p></div>                </div>';
-				$("#message").html(newContent);
-			}
-			
-		  });
+
 		  
 $(document).ready(function () {
     jQuery.validator.addMethod("lettersonly", function (value, element) {
@@ -57,6 +42,14 @@ $(document).ready(function () {
                 required: true,
                 lettersonly: true
             },
+			cpassword: {
+				required: true,
+				equalTo: "#password"
+			},			
+			email: {
+				required: true,
+				email: true
+			},
         },
         highlight: function (element) {
             $(element).closest('.control-group').addClass('has-error');
@@ -66,6 +59,8 @@ $(document).ready(function () {
 			
         }
     });
+	
+	
 });
 
 
