@@ -1,5 +1,5 @@
 //define functions and global variables here...
-var siteloc = "http://localhost/test2";
+var siteloc = "http://localhost/iGit";
 var scriptloc = "/scripts/"
 
 function addUser()

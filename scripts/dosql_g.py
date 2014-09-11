@@ -1,33 +1,19 @@
-#REDO the Villain's Name Activity this time, using postgresql table(s).
-#Recall the samples:
-# To create a table:
-#  CREATE TABLE teb (
-#      teb_id int primary key,
-#      col1 text
-#   );
-#To Insert:
-#  INSERT INTO teb (teb_id, col1) values (1, 'dfd');
-#To retrieve:
-#  select * from teb;
-#
-# Don't forget to include test cases.
-
 import sys
 import psycopg2
 
 
 
 class doSql(object):
-    #attributes
+
     _cxn = ""
     _cur = ""
     errmsg ="" 
-    #methods
-    def __init__(self): #constructor
-        self._cxn = psycopg2.connect("dbname='hygeia' user='postgres' password='4scoreand7yearsago' host='127.0.0.1' port='5432'")
+
+    def __init__(self): 
+        self._cxn = psycopg2.connect("dbname='hygeia' user='postgres' password='alh84001' host='127.0.0.1' port='5432'")
         self._cur = self._cxn.cursor()
         
-    def __del__(self): #destructor
+    def __del__(self): 
         self._cur.close()
         self._cxn.close()
 
@@ -45,9 +31,3 @@ class doSql(object):
             errmsg =  str(sys.exc_info()[1])
             rows.append([errmsg])
         return rows    
-
-    
-#a = doSql()
-#f = a.execqry("select insupattendance('1321', 'CENG1-LEC', getcurrsem(), now()::timestamp without time zone, true)")[0][0] 
-#print f
-#del a
