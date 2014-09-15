@@ -33,7 +33,6 @@ insert into fitnessplan(gender, ageBracket, healthStatus, exercisePlan, dietPlan
    ('female', 'adult', 'overweight', 'exercise plan 2cz', 'diet plan 2cz');
 
   
--- function for getting plans from the table using primary key
 create or replace function get_fitnessplan_bykey(in text, in text, in text, out text, out text)
     returns setof record as
 $$
@@ -42,14 +41,18 @@ $$
 $$
    language 'sql';
    
- create or replace function get_fitnessplan()
-    returns setof record as
+create or replace function get_exerciseplan_bykey(in text, in text, in text, out text)
+    returns setof text as
 $$
-       select * from fitnessplan;
+       select exercisePlan from fitnessplan
+       where gender = $1 and ageBracket = $2 and healthStatus = $3;
 $$
    language 'sql';
 
--- for showing a list/s of plan using the function get_fitness_plan
--- select * from get_fitness_plan('male','young_adult','overweight')
--- returns
--- exercise_plan_1az diet_plan_1az
+create or replace function get_dietplan_bykey(in text, in text, in text, out text)
+    returns setof text as
+$$
+       select dietPlan from fitnessplan
+       where gender = $1 and ageBracket = $2 and healthStatus = $3;
+$$
+   language 'sql';
