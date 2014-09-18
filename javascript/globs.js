@@ -249,3 +249,20 @@ function addprogressrecord(id)
               }
     });
 }
+
+function setpersonalinfo(id)
+{
+  $.ajax({
+      url: siteloc + scriptloc + "personal_info.py",
+      data: {userID:id, 
+			fullname:$("#fullname").val(),
+			birthday:$("#birthday").val(),
+			gender:$("#gender").val(),
+			height:$("#height").val(), 
+			weight:$("#weight").val(), 
+      dataType: 'json',
+      success: function (res) {
+                  console.log("Successfully added.");
+              }
+    });
+}
