@@ -21,8 +21,6 @@ function addUser()
 	
   
 }
-
-
 		  
 $(document).ready(function () {
     jQuery.validator.addMethod("lettersonly", function (value, element) {
@@ -62,8 +60,6 @@ $(document).ready(function () {
 	
 	
 });
-
-
 
 function set_personalfitnessplan(id, personalDietPlan, personalExercisePlan)
 {
@@ -128,7 +124,85 @@ success: function (res) {
 					  table += "</table>";
 					  table += "</div>";
 					  $("#target").html(table); 
-				  } // end if
+				  }
+              }
+    });
+}
+
+function fetchexerciseplan_bykey()
+{
+  $.ajax({
+      url: siteloc + scriptloc + "getexerciseplan_bykey.py",
+      data: {gender:$("#gender").val(),
+             ageBracket:$("#ageBracket").val(),
+             healthStatus:$("#healthStatus").val()},
+      dataType: 'json',
+success: function (res) {
+                  console.log(res);
+                  if(res[0][0] != "None")
+                  {
+				      table = '<div class="table-responsive">';
+					  table += '<table class="table table-condensed">';
+					  table += '<thead>' +
+					           '<tr>' +
+							     '<th>Exercise Plan</th>' +
+							   '</tr>' +
+					           '</thead>';
+					  table += "<tbody>";		   
+					  for (i = 0; i < res.length; i++)
+					  {
+						  row = res[i];
+						  table += "<tr>";
+						  for (j = 0; j < row.length; j++)
+						  {
+							  table += "<td>" + row[j] + "</td>";
+						  }
+						  table += "</tr>";
+					  }
+					  table += "</tbody>";
+					  table += "</table>";
+					  table += "</div>";
+					  $("#target").html(table); 
+				  } 
+              }
+    });
+}
+
+function fetchdietplan_bykey()
+{
+  $.ajax({
+      url: siteloc + scriptloc + "getdietplan_bykey.py",
+      data: {gender:$("#gender").val(),
+             ageBracket:$("#ageBracket").val(),
+             healthStatus:$("#healthStatus").val()},
+      dataType: 'json',
+success: function (res) {
+                  console.log(res);
+                  if(res[0][0] != "None")
+                  {
+				      table = '<div class="table-responsive">';
+					  table += '<table class="table table-condensed">';
+					  table += '<thead>' +
+					           '<tr>' +
+							     '<th>Exercise Plan</th>' +
+							   '</tr>' +
+					           '</thead>';
+					  table += "<tbody>";		   
+					  for (i = 0; i < res.length; i++)
+					  {
+						  row = res[i];
+						  table += "<tr>";
+						  for (j = 0; j < row.length; j++)
+						  {
+							  table += "<td>" + row[j] + "</td>";
+						  }
+						  table += "</tr>";
+					  }
+					  table += "</tbody>";
+					  table += "</table>";
+					  table += "</div>";
+					  $("#target").html(table); 
+				  } 
               }
     });
 }
@@ -169,6 +243,23 @@ function addprogressrecord(id)
 			height:$("#height").val(), 
 			weight:$("#weight").val(), 
 			age:$("#age").val()},
+      dataType: 'json',
+      success: function (res) {
+                  console.log("Successfully added.");
+              }
+    });
+}
+
+function setpersonalinfo(id)
+{
+  $.ajax({
+      url: siteloc + scriptloc + "personal_info.py",
+      data: {userID:id, 
+			fullname:$("#fullname").val(),
+			birthday:$("#birthday").val(),
+			gender:$("#gender").val(),
+			height:$("#height").val(), 
+			weight:$("#weight").val(), 
       dataType: 'json',
       success: function (res) {
                   console.log("Successfully added.");

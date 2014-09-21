@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <body>
@@ -15,6 +16,8 @@
 <a href="progressrecord2.html">Progress Record</a></div>
 
 <div id="content" style="background-color:#EEEEEE;height:400px;width:800px;float:left;">
+=======
+>>>>>>> 70bd53845ee6fe2217075611ebeabbbb45e9ebb4
 <html>
    <head>
 		<link href="css/bootstrap.css" rel="stylesheet">
@@ -25,179 +28,164 @@
         <script src="javascript/bootstrap.min.js"></script>
         <script src="javascript/jqinit.js"></script>
 		<script src="javascript/globs.js"></script>
+		<title>Set Personal Info</title>
    </head>
-   
-  </head>
+
 
   <body>
 
-    <div class="container">
-	
-
-      <!-- Jumbotron -->
-      <div class="container"><center>
-		  <div class="alert alert-info">
-		   <!--<div class="panel panel-info">-->
-			<div class="panel-heading">
-				<h1 class="panel-title">Personal Information</h1>
+		
+		<div class="container">
+			<h2 align="center" class="form-signin-heading">Set Personal Info</h2>	
+			<!--<form class="form-signin" method="post" action="addUser();" id="form-signin">-->
+			<form class="form-signin" id="form-signin" method="post" action="javascript:addUser();" method="post">
 				
-			</div>
-		   <!--</div>-->
-			<form  action="userPersonalInfo.py" method="post" color="red">
-				<table class="tabval" border=1>
-					<tr><td class=tabval>Full Name:</td><td class=tabval><input placeholder="Full Name" type=text size=50 name="fname" required></td></tr>
+
+				<div class="control-group">
+					<label class="control-label" for="fullname">Fullname:</label>
+					<div class="controls">
+						<input size="50" name="fullname" id="fullname" value="" type="text" class="form-control" placeholder="Juan D. Lazy">
+					</div>
 					
-					<tr><td class=tabval>Birthdate:</td>
-															<td class=tabval>
-														
-																	<select name = 'month' style = 'font-size:12px'>
-																	<option value = "00">Month</option>
-																	<option value = "January">January</option>
-																	<option value = "February">February</option>
-																	<option value = "March">March</option>
-																	<option value = "April">April</option>
-																	<option value = "May">May</option>
-																	<option value = "June">June</option>
-																	<option value = "July">July</option>
-																	<option value = "August">August</option>
-																	<option value = "September">September</option>
-																	<option value = "October">October</option>
-																	<option value = "November">November</option>
-																	<option value = "December">December</option>
-																	</select>
+					<label class="control-label" for="birthday">Birthday:</label>
+					<div class="controls">
+						<select name = 'month'>
+						<option value = "00">Month</option>
+						<option value = "January">January</option>
+						<option value = "February">February</option>
+						<option value = "March">March</option>
+						<option value = "April">April</option>
+						<option value = "May">May</option>
+						<option value = "June">June</option>
+						<option value = "July">July</option>
+						<option value = "August">August</option>
+						<option value = "September">September</option>
+						<option value = "October">October</option>
+						<option value = "November">November</option>
+						<option value = "December">December</option>
+						</select>
 																
-																	<select name = 'day' style = 'font-size:12px'>
-																	<option value = "00">Day</option>
-																	<option value = "01">01</option>
-																	<option value = "02">02</option>
-																	<option value = "03">03</option>
-																	<option value = "04">04</option>
-																	<option value = "05">05</option>
-																	<option value = "06">06</option>
-																	<option value = "07">07</option>
-																	<option value = "08">08</option>
-																	<option value = "09">09</option>
-																	<option value = "10">10</option>
-																	<option value = "11">11</option>
-																	<option value = "12">12</option>
-																	<option value = "13">13</option>
-																	<option value = "14">14</option>
-																	<option value = "15">15</option>
-																	<option value = "16">16</option>
-																	<option value = "17">17</option>
-																	<option value = "18">18</option>
-																	<option value = "19">19</option>
-																	<option value = "20">20</option>
-																	<option value = "21">21</option>
-																	<option value = "22">22</option>
-																	<option value = "23">23</option>
-																	<option value = "24">24</option>
-																	<option value = "25">25</option>
-																	<option value = "26">26</option>
-																	<option value = "27">27</option>
-																	<option value = "28">28</option>
-																	<option value = "29">29</option>
-																	<option value = "30">30</option>
-																	<option value = "30">31</option>
-																	</select>
+						<select name = 'day'>
+						<option value = "00">Day</option>
+						<option value = "01">01</option>
+						<option value = "02">02</option>
+						<option value = "03">03</option>
+						<option value = "04">04</option>
+						<option value = "05">05</option>
+						<option value = "06">06</option>
+						<option value = "07">07</option>
+						<option value = "08">08</option>
+						<option value = "09">09</option>
+						<option value = "10">10</option>
+						<option value = "11">11</option>
+						<option value = "12">12</option>
+						<option value = "13">13</option>
+						<option value = "14">14</option>
+						<option value = "15">15</option>
+						<option value = "16">16</option>
+						<option value = "17">17</option>
+						<option value = "18">18</option>
+						<option value = "19">19</option>
+						<option value = "20">20</option>
+						<option value = "21">21</option>
+						<option value = "22">22</option>
+						<option value = "23">23</option>
+						<option value = "24">24</option>
+						<option value = "25">25</option>
+						<option value = "26">26</option>
+						<option value = "27">27</option>
+						<option value = "28">28</option>
+						<option value = "29">29</option>
+						<option value = "30">30</option>
+						<option value = "30">31</option>
+						</select>
 																
-																	<select name = 'year' style = 'font-size:12px'>
-																	<option value = "0000">Year</option>
-																	<option value = "2013">1960</option>
-																	<option value = "2014">1961</option>
-																	<option value = "2013">1962</option>
-																	<option value = "2014">1963</option>
-																	<option value = "2013">1964</option>
-																	<option value = "2014">1965</option>
-																	<option value = "2013">1966</option>
-																	<option value = "2014">1967</option>
-																	<option value = "2013">1968</option>
-																	<option value = "2014">1969</option>
-																	<option value = "2013">1970</option>
-																	<option value = "2014">1971</option>
-																	<option value = "2013">1972</option>
-																	<option value = "2014">1973</option>
-																	<option value = "2013">1974</option>
-																	<option value = "2014">1975</option>
-																	<option value = "2013">1976</option>
-																	<option value = "2014">1977</option>
-																	<option value = "2013">1978</option>
-																	<option value = "2014">1979</option>
-																	<option value = "2013">1980</option>
-																	<option value = "2014">1981</option>
-																	<option value = "2013">1982</option>
-																	<option value = "2014">1983</option>
-																	<option value = "2013">1984</option>
-																	<option value = "2014">1986</option>
-																	<option value = "2013">1987</option>
-																	<option value = "2014">1988</option>
-																	<option value = "2013">1989</option>
-																	<option value = "2014">1990</option>
-																	<option value = "2013">1991</option>
-																	<option value = "2014">1992</option>
-																	<option value = "2013">1993</option>
-																	<option value = "2014">1994</option>
-																	<option value = "2013">1995</option>
-																	<option value = "2014">1996</option>
-																	<option value = "2013">1997</option>
-																	<option value = "2014">1998</option>
-																	<option value = "2013">1999</option>
-																	<option value = "2014">2000</option>
-																	<option value = "2013">2001</option>
-																	<option value = "2014">2002</option>
-																	<option value = "2013">2003</option>
-																	<option value = "2014">2004</option>
-																	<option value = "2013">2005</option>
-																	<option value = "2014">2006</option>
-																	<option value = "2013">2007</option>
-																	<option value = "2014">2008</option>
-																	<option value = "2013">2009</option>
-																	<option value = "2014">2010</option>
-																	<option value = "2013">2011</option>
-																	<option value = "2014">2012</option>
-																	<option value = "2013">2013</option>
-																	<option value = "2014">2014</option>
-																	
-																	</select>
-																						
-														</td>
-					</tr>
+						<select name = 'year'>
+						<option value = "0000">Year</option>
+						<option value = "1960">1960</option>
+						<option value = "1961">1961</option>
+						<option value = "1962">1962</option>
+						<option value = "1963">1963</option>
+						<option value = "1964">1964</option>
+						<option value = "1965">1965</option>
+						<option value = "1966">1966</option>
+						<option value = "1967">1967</option>
+						<option value = "1968">1968</option>
+						<option value = "1969">1969</option>
+						<option value = "1970">1970</option>
+						<option value = "1971">1971</option>
+						<option value = "1972">1972</option>
+						<option value = "1973">1973</option>
+						<option value = "1974">1974</option>
+						<option value = "1975">1975</option>
+						<option value = "1976">1976</option>
+						<option value = "1977">1977</option>
+						<option value = "1978">1978</option>
+						<option value = "1979">1979</option>
+						<option value = "1980">1980</option>
+						<option value = "1981">1981</option>
+						<option value = "1982">1982</option>
+						<option value = "1983">1983</option>
+						<option value = "1984">1984</option>
+						<option value = "1986">1986</option>
+						<option value = "1987">1987</option>
+						<option value = "1988">1988</option>
+						<option value = "1989">1989</option>
+						<option value = "1990">1990</option>
+						<option value = "1991">1991</option>
+						<option value = "1992">1992</option>
+						<option value = "1993">1993</option>
+						<option value = "1994">1994</option>
+						<option value = "1995">1995</option>
+						<option value = "1996">1996</option>
+						<option value = "1997">1997</option>
+						<option value = "1998">1998</option>
+						<option value = "1999">1999</option>
+						<option value = "2000">2000</option>
+						<option value = "2001">2001</option>
+						<option value = "2002">2002</option>
+						<option value = "2003">2003</option>
+						<option value = "2004">2004</option>
+						<option value = "2005">2005</option>
+						<option value = "2006">2006</option>
+						<option value = "2007">2007</option>
+						<option value = "2008">2008</option>
+						<option value = "2009">2009</option>
+						<option value = "2010">2010</option>
+						<option value = "2011">2011</option>
+						<option value = "2012">2012</option>
+						<option value = "2013">2013</option>
+						<option value = "2014">2014</option>
+						</select>
+					</div>
 					
-					<tr><td class=tabval>Gender:</td>
-					<td class=tabval>
-					<select name = 'gender' style = 'font-size:12px'>
-																	<option value = "0000">Gender</option>
-																	<option value = "male">Male</option>
-																	<option value = "female">Female</option>
-																</select>
-													</td>
-											</tr>
+					<br>
+					<label class="control-label" for="gender">Gender:</label>
+					<div class="controls">
+						 <input type="radio" name="gender" id ="gender" value="male">Male
+						 <input type="radio" name="gender" id ="gender" value="female">Female
+					</select>
+					</div>
 					
-					<tr><td class=tabval>Height:</td><td class=tabval> <input placeholder="Height" type=text size=50 name="height" required></td></tr>
-					<tr><td class=tabval>Weight:</td><td class=tabval> <input placeholder="Weight" type=text size=50 name="weight" required></td><tr> 
+					<br>
+					<label class="control-label" for="height">Height:</label>
+					<div class="controls">
+						<input size="50" name="height" id="height" value="" type="text" class="form-control" placeholder="Height in centimeter">
+					</div>
 					
-					
-					<tr><td></td><td><center><input class="btn btn-lg btn-primary" type=submit border=20 value="Submit"></center></td></tr>
-				</table>
+					<label class="control-label" for="weight">Weight:</label>
+					<div class="controls">
+						<input size="50" name="weight" id="weight" value="" type="text" class="form-control" placeholder="Weight in kilogram">
+					</div>
+				</div>
+				
+				<button name="submit" id="submit" value="" type="submit" class="btn btn-large btn-primary btn-block" >Submit</button>
+				
+				<div id="message"><!-- This will hold the Success/Error message every button click -->
+
+				</div>
 			</form>
-			</center>
-			<!--<p><a class="btn btn-lg btn-success" href="#">Get started today</a></p>-->
-		  </div> <!--alert-->
-      </div> <!--form container-->
-
-	</div><!--container-->
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+		</div>   
   </body>
-</html>
 
-</div>
-
-<div id="footer" style="background-color:#FFA500;clear:both;text-align:center;">
-Copyright 2014 &copy; IHopeYoureHappy</div>
-
-</div>
- 
-</body>
 </html>
