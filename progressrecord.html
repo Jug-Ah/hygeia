@@ -10,14 +10,14 @@
 		<script src="javascript/globs.js"></script>
    </head>
    <body>
-	   <h1>Your Record</h1>
+		<div class="container">
+   
        <table>
 			   <thead>
 			     <tr>
 				    <th>Week</th>
 					<th>Height</th>
 					<th>&nbsp;&nbsp;&nbsp;Weight</th>
-					<th>&nbsp;&nbsp;&nbsp;Age</th>
 				 </tr>
 			   </thead>
 			   <tbody>
@@ -25,8 +25,7 @@
 					<td>Week 0 &nbsp;&nbsp;&nbsp;&nbsp; </td> 
 					<td> <input type="float" id="height" placeholder="Height"> </td>
 					<td> &nbsp;&nbsp; <input type="float" id="weight" placeholder="Weight">  </td>
-					<td> &nbsp;&nbsp; <input type="int" id="age" placeholder="Age"> </td>
-					<td> &nbsp;&nbsp; <button class="btn btn-success btn-mini" onclick="addprogressrecord(1);">
+					<td> &nbsp;&nbsp; <button class="btn btn-success btn-mini" onclick="addprogressrecord();fetchprogresshistoryof();">
 				Update
 	   </button> </td>
 			     </tr>

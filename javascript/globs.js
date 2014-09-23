@@ -1,27 +1,25 @@
 //define functions and global variables here...
 var siteloc = "http://localhost/Hygeia";
 var scriptloc = "/scripts/";
-var x = 1;
 
 function addUser()
 {
   $.ajax({
-      url: siteloc + scriptloc + "setUserName.py",
+      url: siteloc + scriptloc + "adduser.py",
       data: {username:$("#login").val(), password:$("#password").val(), email:$("#email").val()},
       dataType: 'json',
-      success: function (res) {			
-			var newContent = '<div class="ui-widget"><div class="ui-state-highlight ui-corner-all">  <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>  <strong>Successfully Registered!</strong></p></div></div>';
-			$("#message").html(newContent);
-			//window.location.replace("http://pageAfterRegister.com");			
-			console.log("Successfully registered");
-			$("#form-signin")[0].reset();
-			                  
-              }
+      success: function (res) {	
+				if (typeof(Storage) != "undefined") {
+					localStorage.id = res;
+				} else {
+					console.log("Sorry, your browser does not support Web Storage...");
+				}
+				window.location.replace(siteloc + "/personalinfo.html");
+				console.log("Successfully registered.");          
+            }
     });
-	
-  
 }
-		  
+
 $(document).ready(function () {
     jQuery.validator.addMethod("lettersonly", function (value, element) {
         return this.optional(element) || /^[a-z0-9_-]+$/i.test(value);
@@ -60,6 +58,65 @@ $(document).ready(function () {
 	
 	
 });
+
+function setpersonalinfo()
+{
+  $.ajax({
+      url: siteloc + scriptloc + "setpersonalinfo.py",
+      data: {userID:localStorage.id, 
+			fullname:$("#fullname").val(),
+			birthday:$("#year").val() + "-" + $("#month").val() + "-" + $("#day").val(),
+			gender:$("#gender").val() }, 
+      dataType: 'json',
+      success: function (res) {
+					window.location.replace(siteloc + "/progressrecord.html");
+					console.log("Successfully added personal info.");
+              }
+    });
+}
+
+function addprogressrecord()
+{
+  $.ajax({
+      url: siteloc + scriptloc + "setprogressrecord.py",
+      data: {userID:localStorage.id, 
+			height:$("#height").val(), 
+			weight:$("#weight").val()},
+      dataType: 'json',
+      success: function (res) {
+					console.log("Successfully added progress record.");
+              }
+    });
+}
+
+
+function fetchprogresshistoryof()
+{
+  $.ajax({
+      url: siteloc + scriptloc + "getprogressrecord.py",
+      data: {userID:x},
+      dataType: 'json',
+      success: function (res) {
+                  console.log(res);
+                  if(res[0][0] != "None")
+                  {
+					  table = '<table border="1">';
+					  for (i = 0; i < res.length; i++)
+					  {
+						  row = res[i];
+						  table += "<tr>";
+						  for (j = 0; j < row.length; j++)
+						  {
+							  table += "<td>" + row[j] + "</td>";
+						  }
+						  table += "</tr>";
+					  }
+					  table += "</table>";
+					  $("#target").html(table); 
+				  } // end if
+              }
+    });
+}
 
 function set_personalfitnessplan(id, personalDietPlan, personalExercisePlan)
 {
@@ -207,62 +264,6 @@ success: function (res) {
     });
 }
 
-function fetchprogresshistoryof()
-{
-  $.ajax({
-      url: siteloc + scriptloc + "getprogrec.py",
-      data: {userID:x},
-      dataType: 'json',
-      success: function (res) {
-                  console.log(res);
-                  if(res[0][0] != "None")
-                  {
-					  table = '<table border="1">';
-					  for (i = 0; i < res.length; i++)
-					  {
-						  row = res[i];
-						  table += "<tr>";
-						  for (j = 0; j < row.length; j++)
-						  {
-							  table += "<td>" + row[j] + "</td>";
-						  }
-						  table += "</tr>";
-					  }
-					  table += "</table>";
-					  $("#target").html(table); 
-				  } // end if
-              }
-    });
-}
 
-function addprogressrecord(id)
-{
-  $.ajax({
-      url: siteloc + scriptloc + "setprogrec.py",
-      data: {userID:id, 
-			height:$("#height").val(), 
-			weight:$("#weight").val(), 
-			age:$("#age").val()},
-      dataType: 'json',
-      success: function (res) {
-                  console.log("Successfully added.");
-              }
-    });
-}
 
-function setpersonalinfo(id)
-{
-  $.ajax({
-      url: siteloc + scriptloc + "personal_info.py",
-      data: {userID:id, 
-			fullname:$("#fullname").val(),
-			birthday:$("#birthday").val(),
-			gender:$("#gender").val(),
-			height:$("#height").val(), 
-			weight:$("#weight").val(), 
-      dataType: 'json',
-      success: function (res) {
-                  console.log("Successfully added.");
-              }
-    });
-}
+

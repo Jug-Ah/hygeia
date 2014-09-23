@@ -35,3 +35,11 @@ body {
 .error {
     color: #b94a48;
 }
+
+.background {
+    width: 200px;
+    height: 200px;
+    background-image: url('pictures/background.jpg');
+    position: absolute;
+    z-index: 1;
+}

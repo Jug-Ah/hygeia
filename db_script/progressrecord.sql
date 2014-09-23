@@ -1,4 +1,3 @@
-
 create table progressrecord  (
 	progrecID serial primary key,
 	userID int references useraccount(userid),
