@@ -2,19 +2,19 @@
 var siteloc = "http://localhost/Hygeia";
 var scriptloc = "/scripts/";
 
-function addUser()
+function adduser()
 {
   $.ajax({
       url: siteloc + scriptloc + "adduser.py",
       data: {username:$("#login").val(), password:$("#password").val(), email:$("#email").val()},
       dataType: 'json',
+	  async: true,
       success: function (res) {	
 				if (typeof(Storage) != "undefined") {
 					localStorage.id = res;
 				} else {
 					console.log("Sorry, your browser does not support Web Storage...");
 				}
-				window.location.replace(siteloc + "/personalinfo.html");
 				console.log("Successfully registered.");          
             }
     });
@@ -62,14 +62,14 @@ $(document).ready(function () {
 function setpersonalinfo()
 {
   $.ajax({
-      url: siteloc + scriptloc + "setpersonalinfo.py",
-      data: {userID:localStorage.id, 
+		url: siteloc + scriptloc + "setpersonalinfo.py",
+		data: {userID:localStorage.id, 
 			fullname:$("#fullname").val(),
 			birthday:$("#year").val() + "-" + $("#month").val() + "-" + $("#day").val(),
 			gender:$("#gender").val() }, 
-      dataType: 'json',
-      success: function (res) {
-					window.location.replace(siteloc + "/progressrecord.html");
+		async: true,
+		dataType: 'json',
+		success: function (res) {
 					console.log("Successfully added personal info.");
               }
     });
@@ -78,12 +78,13 @@ function setpersonalinfo()
 function addprogressrecord()
 {
   $.ajax({
-      url: siteloc + scriptloc + "setprogressrecord.py",
-      data: {userID:localStorage.id, 
+		url: siteloc + scriptloc + "setprogressrecord.py",
+		data: {userID:localStorage.id, 
 			height:$("#height").val(), 
 			weight:$("#weight").val()},
-      dataType: 'json',
-      success: function (res) {
+		async: true,
+		dataType: 'json',
+		success: function (res) {
 					console.log("Successfully added progress record.");
               }
     });
@@ -94,7 +95,8 @@ function fetchprogresshistoryof()
 {
   $.ajax({
       url: siteloc + scriptloc + "getprogressrecord.py",
-      data: {userID:x},
+      data: {userID:localStorage.id},
+	  async: true,
       dataType: 'json',
       success: function (res) {
                   console.log(res);
