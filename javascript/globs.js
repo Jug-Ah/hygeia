@@ -24,9 +24,9 @@ $(document).ready(function () {
     jQuery.validator.addMethod("lettersonly", function (value, element) {
         return this.optional(element) || /^[a-z0-9_-]+$/i.test(value);
     }, "Please use only a-z0-9_-");
-    $('#form-signin').validate({
+    $('#form-signup').validate({
         rules: {
-            login: {
+            username: {
                 minlength: 3,
                 maxlength: 15,
                 required: true,
@@ -52,11 +52,56 @@ $(document).ready(function () {
         },
         success: function (element) {
             element.closest('.control-group').removeClass('has-error');
-			
         }
     });
-	
-	
+	$('#form-userinfo').validate({
+        rules: {
+            fullname: {
+                minlength: 3,
+                maxlength: 25,
+                required: true,
+                lettersonly: true
+            },
+            month: {
+                required: true,
+            },
+			day: {
+                required: true,
+            },
+			year: {
+                required: true,
+            },	
+			gender: {
+				required: true,
+			},
+        },
+        highlight: function (element) {
+            $(element).closest('.control-group').addClass('has-error');
+        },
+        success: function (element) {
+            element.closest('.control-group').removeClass('has-error');
+        }
+    });
+	$('#form-userrecord').validate({
+        rules: {
+            height: {
+                minlength: 3,
+                maxlength: 25,
+                required: true,
+            },
+            weight: {
+                minlength: 3,
+                maxlength: 25,
+                required: true,
+            },
+		 },
+        highlight: function (element) {
+            $(element).closest('.control-group').addClass('has-error');
+        },
+        success: function (element) {
+            element.closest('.control-group').removeClass('has-error');
+        }
+    });
 });
 
 function setpersonalinfo()
