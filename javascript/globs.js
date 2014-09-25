@@ -6,7 +6,7 @@ function adduser()
 {
   $.ajax({
       url: siteloc + scriptloc + "adduser.py",
-      data: {username:$("#login").val(), password:$("#password").val(), email:$("#email").val()},
+      data: {username:$("#username").val(), password:$("#password").val(), email:$("#email").val()},
       dataType: 'json',
 	  async: true,
       success: function (res) {	
@@ -18,6 +18,12 @@ function adduser()
 				console.log("Successfully registered.");          
             }
     });
+	$('#register').prop('disabled',true);
+	$('#username').prop('disabled',true);
+	$('#email').prop('disabled',true);
+	$('#password').prop('disabled',true);
+	$('#cpassword').prop('disabled',true);
+	$('#RegisterTab a[href="#PersonalInfo"]').tab('show');
 }
 
 $(document).ready(function () {
@@ -59,8 +65,7 @@ $(document).ready(function () {
             fullname: {
                 minlength: 3,
                 maxlength: 25,
-                required: true,
-                lettersonly: true
+                required: true
             },
             month: {
                 required: true,
@@ -85,12 +90,12 @@ $(document).ready(function () {
 	$('#form-userrecord').validate({
         rules: {
             height: {
-                minlength: 3,
+                minlength: 2,
                 maxlength: 25,
                 required: true,
             },
             weight: {
-                minlength: 3,
+                minlength: 2,
                 maxlength: 25,
                 required: true,
             },
@@ -118,6 +123,13 @@ function setpersonalinfo()
 					console.log("Successfully added personal info.");
               }
     });
+	$('#save').prop('disabled',true);
+	$('#fullname').prop('disabled',true);
+	$('#month').prop('disabled',true);
+	$('#day').prop('disabled',true);
+	$('#year').prop('disabled',true);
+	$('#gender').prop('disabled',true);
+	$('#RegisterTab a[href="#HealthStats"]').tab('show');
 }
 
 function addprogressrecord()
@@ -133,6 +145,10 @@ function addprogressrecord()
 					console.log("Successfully added progress record.");
               }
     });
+	$('#formulate').prop('disabled',true);
+	$('#height').prop('disabled',true);
+	$('#weight').prop('disabled',true);
+	$('#RegisterTab a[href="#HealthStats"]').tab('show');
 }
 
 

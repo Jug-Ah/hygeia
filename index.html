@@ -17,7 +17,7 @@
   
 	<!-- Register Modal -->
 	<div class="modal fade" id="SignUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog" style="width:600px">
+	<div class="modal-dialog" style="width:597px">
 	<div class="modal-content">
 		<div class="modal-body" style="padding:50px">
 			<!-- Header -->
@@ -25,11 +25,11 @@
 			<span aria-hidden="true">&times;</span><span class="sr-only">lose</span></button>
 			<h1 class="modal-title" id="myModalLabel" style="font-size: 30px">Register</h1> <br>
 			<!-- Tabs -->
-			<ul class="nav nav-tabs" role="tablist">
+			<ul class="nav nav-tabs" role="tablist" id="RegisterTab">
 			  <li class="active"><a href="#UserAccount" role="tab" data-toggle="tab">User Account</a></li>
 			  <li><a href="#PersonalInfo" role="tab" data-toggle="tab">Personal Info</a></li>
 			  <li><a href="#HealthStats" role="tab" data-toggle="tab">Health Stats</a></li>
-			  <li><a href="#HygeiaPlanner" role="tab" data-toggle="tab">Hygeia Planner</a></li>
+			  <li><a href="#PlanGenerator" role="tab" data-toggle="tab">Plan Generator</a></li>
 			</ul>
 			<!-- Body -->
 			<div class="tab-content">
@@ -56,7 +56,7 @@
 						</div>
 						<div id="message">
 						</div> <br> 
-						<button name="submit" id="submit" value="" type="submit" class="btn btn-primary btn-block" href="#PersonalInfo">Register</button> 
+						<button name="submit" id="register" value="" type="submit" class="btn btn-primary btn-block">Register</button> 
 					</form>
 				</div>
 				<!-- Personal Info -->
@@ -160,22 +160,29 @@
 								<option value = "1965">1965</option>
 								<option value = "1965">1964</option>
 								</select> </div> </div>
-							</div>
-							<br>
+							</div> <br>
 							<label class="control-label" for="gender">Gender:</label>
-							<div class="controls"> <div class="row">
-								 <div class="col-md-2"> <div class="radio"> 
-								  <label> <input type="radio" name="optionsRadios" id="gender" value="Male">Male</label> </div>
-								</div> 
-								<div class="col-md-2"> <div class="radio"> 
-								  <label> <input type="radio" name="optionsRadios" id="gender" value="Female">Female</label> </div> </div>
+							<div class="controls"> 
+								<div class="row">
+								  <div class="col-md-2"> 
+									 <div class="radio"> 
+									  <label> <input type="radio" name="optionsRadios" id="gender" value="Male">Male</label> 
+									  </div>
+								  </div> 
+								  <div class="col-md-2"> 
+									<div class="radio"> 
+									  <label> <input type="radio" name="optionsRadios" id="gender" value="Female">Female</label> 
+									  </div> 
+								  </div>
 								</div> 
 							</select>
 							</div>
 							<br>
-							<button name="submit" id="submit" value="" type="submit" class="btn btn-primary btn-block" href="#PersonalInfo">Save</button>
-						<div id="message"><!-- This will hold the Success/Error message every button click --> </div>
-						</div> </form> </div>
+							<button name="submit" id="save" value="" type="submit" class="btn btn-primary btn-block" href="#PersonalInfo">Save</button>
+							<div id="message"><!-- This will hold the Success/Error message every button click --> </div>
+						</div> 
+					</form> 
+				</div>
 				<!-- Health Stats -->
 				<div class="tab-pane" id="HealthStats"> <br> <br>
 					<form class="center form" id="form-userrecord" method="post" action="javascript:addprogressrecord();fetchprogresshistoryof();" method="post">
@@ -195,7 +202,7 @@
 								</div> </div> 
 							</div>
 						</div>
-						<button name="submit" id="submit" value="" type="submit" class="btn btn-primary btn-block" href="#HealthStats" data-toggle="collapse" data-target="#stats">Formulate Stats</button>
+						<button name="submit" id="formulate" value="" type="submit" class="btn btn-primary btn-block" href="#HealthStats" data-toggle="collapse" data-target="#stats">Formulate Stats</button>
 					</form>
 					<div id="stats" class="panel-collapse collapse" style="padding: 0px;">
 					  <div class="panel-body" style="padding: 0px;">
@@ -217,16 +224,16 @@
 					  </div>
 					</div>
 				</div>
-				<!-- Hygeia Planner -->
-				<div class="tab-pane" id="HygeiaPlanner"> <br> <br>
+				<!-- Plan Generator -->
+				<div class="tab-pane" id="PlanGenerator"> <br> <br>
 					<div class="panel-group" id="accordion">
-						<button name="submit" id="submit" value="" type="submit" class="btn btn-primary btn-block" href="#UserProfile" data-toggle="collapse" data-target="#dietplan">Formulate Diet Plan</button>
+						<button name="submit" id="generatediet" value="" type="submit" class="btn btn-primary btn-block" href="#UserProfile" data-toggle="collapse" data-target="#dietplan">Generate Diet Plan</button>
 						<div id="dietplan" class="panel-collapse collapse">
 						  <div class="panel-body">
 							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
 						  </div>
 						</div> <br>
-						<button name="submit" id="submit" value="" type="submit" class="btn btn-primary btn-block" href="#UserProfile" data-toggle="collapse" data-target="#fitnessplan">Formulate Fitness Plan</button>
+						<button name="submit" id="generatefitness" value="" type="submit" class="btn btn-primary btn-block" href="#UserProfile" data-toggle="collapse" data-target="#fitnessplan">Generate Fitness Plan</button>
 						<div id="fitnessplan" class="panel-collapse collapse">
 						  <div class="panel-body">
 							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
