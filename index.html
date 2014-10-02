@@ -19,10 +19,9 @@
   
 		<!-- Register Modal -->
 		<!-- TBC: 
-		1.) Tabs be browsable "back" upon after form submission,
-		2.) Change tab names to an appropriate one,
-		3.) Add loading icon feature for username and email check,
-		4.) Improve UI (TS) -->
+		1.) Change tab names to an appropriate one,
+		2.) Add loading icon feature for username and email check,
+		3.) Improve UI (TS) -->
 		<div class="modal fade" id="SignUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog" id="ModalDialog">
 				<div class="modal-content">
@@ -321,17 +320,14 @@
 					<div class="carousel-caption"> 
 						<h1> Glad you are back. </h1>
 						<p class="lead"> Be right on track always. </p>
-						
-							  <form class="form-signin" action="javascript: userLogin();" role="form">
+							  <form class="form-signin" action="javascript: userlogin();" role="form">
 							  	<div id="LogInCollapse" class="collapse">
-								    <input id="loginuser" type="text" class="form-control" placeholder="Username" required="" autofocus="">
-								    <input id="loginpass" type="password" class="form-control" placeholder="Password" required="">
+								    <input id="loginuser" type="text" class="form-control" placeholder="Username">
+								    <input id="loginpass" type="password" class="form-control" placeholder="Password">
+								    <p id="LogInOutput"> <br> </p>
 							    </div>
-							    <button type="submit" onclick="$('#LogInCollapse').collapse('show');" class="btn btn-primary btn-lg">Log In</button>
+							    <button type="submit" onclick="logincollapse();" class="btn btn-primary btn-lg">Log In</button>
 							  </form>
-
-						
-						
 					</div>
 				</div>
 				<div class="item" id="CarouselThree">

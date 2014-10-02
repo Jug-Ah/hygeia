@@ -5,7 +5,7 @@ var scriptloc = "/scripts/";
 $(document).ready(function () {
     jQuery.validator.addMethod("lettersonly", function (value, element) {
 		return this.optional(element) || /^[a-z\s]+$/i.test(value);
-	}, "Must be composed of etters only."); 
+	}, "Must be composed of letters only."); 
 
     $('#form-signup').validate({
         rules: {
@@ -107,31 +107,43 @@ $(document).ready(function () {
     });
 });
 
-function userLogin()
+function logincollapse() {
+	if ($("#loginuser").val() && $("#loginpass").val()) {
+		$('#LogInCollapse').collapse({
+			toggle: false
+		});
+	}
+	else {
+		$('#LogInCollapse').collapse('toggle');
+	}
+}
+
+function userlogin()
 {
-
-  	
-
-  $.ajax({
-      url: siteloc + scriptloc + "login.py",
-      data: {username:$("#loginuser").val(), password:$("#loginpass").val()},
-      dataType: 'json',
-	  async: true,
-      success: function (res) {	
-				if (res == true) {					
-				    console.log("Successfully logged in!");
-					$('#login').prop('disabled',true);
-					$('#loginuser').prop('disabled',true);	
-					$('#loginpass').prop('disabled',true);
-					alert("Successfully logged in!");
-					window.location = "http://localhost/hygeia";
-					
-				} else {
-					console.log("Invalid login details.");
-				}				      
-            }
-    });
-	
+	if (!$("#loginuser").val() && !$("#loginpass").val()) {
+		$('#LogInCollapse').collapse('toggle');
+	} 
+	else {
+	  $.ajax({
+	      url: siteloc + scriptloc + "login.py",
+	      data: {username:$("#loginuser").val(), password:$("#loginpass").val()},
+	      dataType: 'json',
+		  async: true,
+	      success: function (res) {	
+					if (res == true) {					
+					    console.log("Successfully logged in!");
+						$('#login').prop('disabled',true);
+						$('#loginuser').prop('disabled',true);
+						$('#loginpass').prop('disabled',true);
+						//alert("Successfully logged in!");
+						window.location = "http://localhost/Hygeia/dashboard.html";
+					} else {
+						console.log("Invalid login details.");
+						$("#LogInOutput").html("Invalid login details.");
+					}				      
+	            }
+	    });
+	}
 }
 
 function adduser()
@@ -143,7 +155,7 @@ function adduser()
 	  async: true,
       success: function (res) {	
 				if (typeof(Storage) != "undefined") {
-					localStorage.id = res;
+					sessionStorage.id = res;
 				} else {
 					console.log("Sorry, your browser does not support Web Storage.");
 				}
@@ -168,14 +180,10 @@ function adduser()
 
 function setpersonalinfo()
 {
-	if (typeof(Storage) != "undefined") {
-		localStorage.gender = $("#gender").val();
-	} else {
-		console.log("Sorry, your browser does not support Web Storage.");
-	}
+  sessionStorage.gender = $("#gender").val();
   $.ajax({
 		url: siteloc + scriptloc + "setpersonalinfo.py",
-		data: {userID:localStorage.id, 
+		data: {userID:sessionStorage.id, 
 			fullname:$("#fullname").val(),
 			birthday:$("#year").val() + "-" + $("#month").val() + "-" + $("#day").val(),
 			gender:$("#gender").val() }, 
@@ -202,7 +210,7 @@ function addprogressrecord()
 {
   $.ajax({
 		url: siteloc + scriptloc + "setprogressrecord.py",
-		data: {userID:localStorage.id, 
+		data: {userID:sessionStorage.id, 
 			height:$("#height").val(), 
 			weight:$("#weight").val()},
 		async: true,
@@ -220,14 +228,12 @@ function fetchprogresshistoryof()
 {
   $.ajax({
       url: siteloc + scriptloc + "getprogressrecord.py",
-      data: {userID:localStorage.id},
+      data: {userID:sessionStorage.id},
       dataType: 'json',
       success: function (res) {
-                  $("#target").html(res);
-                  
                   var age = "You are " + res[0][4] + " years old.";
                   var bmi = "Your BMI is " + res[0][2] + " and you are " + res[0][3] + ".";
-                  var gender = "You are " + localStorage.gender;
+                  var gender = "You are " + sessionStorage.gender;
 
                   $("#AgeStats").html(age);
                   $("#BMIStats").html(bmi);
@@ -235,7 +241,6 @@ function fetchprogresshistoryof()
               }
     });
   	$('#Stats').collapse('show');
-  	//$('#RegisterTab a[href="#PlanGenerator"]').tab('show');
 	$('#RegisterTab a[href="#PlanGenerator"]').click(function (e) {
 	  e.preventDefault()
 	  $(this).tab('show')
@@ -389,5 +394,20 @@ function fetchdietplan_bykey()
 }
 
 
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
 
-
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) != -1) return c.substring(name.length,c.length);
+    }
+    return "";
+}
