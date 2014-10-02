@@ -107,6 +107,29 @@ $(document).ready(function () {
     });
 });
 
+function userLogin()
+{
+  $.ajax({
+      url: siteloc + scriptloc + "login.py",
+      data: {username:$("#username").val(), password:$("#password").val()},
+      dataType: 'json',
+	  async: true,
+      success: function (res) {	
+				if (res == true) {					
+				    console.log("Successfully logged in!");
+					$('#login').prop('disabled',true);
+					$('#username').prop('disabled',true);	
+					$('#password').prop('disabled',true);
+					window.location = "http://localhost/hygeia";
+					
+				} else {
+					console.log("Invalid login details.");
+				}				      
+            }
+    });
+	
+}
+
 function adduser()
 {
   $.ajax({
