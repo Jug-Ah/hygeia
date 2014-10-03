@@ -109,17 +109,21 @@ $(document).ready(function () {
 
 function userLogin()
 {
+
+  	
+
   $.ajax({
       url: siteloc + scriptloc + "login.py",
-      data: {username:$("#username").val(), password:$("#password").val()},
+      data: {username:$("#loginuser").val(), password:$("#loginpass").val()},
       dataType: 'json',
 	  async: true,
       success: function (res) {	
 				if (res == true) {					
 				    console.log("Successfully logged in!");
 					$('#login').prop('disabled',true);
-					$('#username').prop('disabled',true);	
-					$('#password').prop('disabled',true);
+					$('#loginuser').prop('disabled',true);	
+					$('#loginpass').prop('disabled',true);
+					alert("Successfully logged in!");
 					window.location = "http://localhost/hygeia";
 					
 				} else {
