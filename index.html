@@ -321,14 +321,17 @@
 					<div class="carousel-caption"> 
 						<h1> Glad you are back. </h1>
 						<p class="lead"> Be right on track always. </p>
-						<div id="LogInCollapse" class="collapse">
-							  <form class="form-signin" role="form">
-							    <input id="loginuser" type="text" class="form-control" placeholder="Username" required="" autofocus="">
-							    <input id="loginpass" type="password" class="form-control" placeholder="Password" required="">
-							    </label>
+						
+							  <form class="form-signin" action="javascript: userLogin();" role="form">
+							  	<div id="LogInCollapse" class="collapse">
+								    <input id="loginuser" type="text" class="form-control" placeholder="Username" required="" autofocus="">
+								    <input id="loginpass" type="password" class="form-control" placeholder="Password" required="">
+							    </div>
+							    <button type="submit" onclick="$('#LogInCollapse').collapse('show');" class="btn btn-primary btn-lg">Log In</button>
 							  </form>
-						</div>
-						<button class="btn btn-primary btn-lg" data-toggle="collapse" data-target="#LogInCollapse">Log In</button>
+
+						
+						
 					</div>
 				</div>
 				<div class="item" id="CarouselThree">
