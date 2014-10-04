@@ -235,12 +235,12 @@ function fetchprogresshistoryof()
       data: {userID:sessionStorage.id},
       dataType: 'json',
       success: function (res) {
-                  var agebracket = "Your bracket is" + res[0][5];
+                  var agebracket = "Your bracket is " + res[0][5];
                   var healthstatus = "You are " + res[0][3];
                   var gender = "You are " + sessionStorage.gender;
 
                   $("#AgeStats").html(agebracket);
-                  $("#HealthStats").html(healthstatus);
+                  $("#ClassStats").html(healthstatus);
                   $("#GenderStats").html(gender);
               }
     });

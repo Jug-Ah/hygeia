@@ -19,9 +19,10 @@
   
 		<!-- Register Modal -->
 		<!-- TBC: 
-		1.) Change tab names to an appropriate one,
-		2.) Add loading icon feature for username and email check,
-		3.) Improve UI (TS) -->
+		1.) Tabs be browsable "back" upon after form submission,
+		2.) Change tab names to an appropriate one,
+		3.) Add loading icon feature for username and email check,
+		4.) Improve UI (TS) -->
 		<div class="modal fade" id="SignUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog" id="ModalDialog">
 				<div class="modal-content">
@@ -180,12 +181,12 @@
 											<div class="row">
 											  <div class="col-md-2"> 
 												<div class="radio"> 
-												  <label> <input type="radio" name="optionsRadios" id="gender" value="Male">Male</label> 
+												  <label> <input type="radio" name="optionsRadios" id="gender" value="male">Male</label> 
 												</div>
 											  </div> 
 											  <div class="col-md-2"> 
 												<div class="radio"> 
-												  <label> <input type="radio" name="optionsRadios" id="gender" value="Female">Female</label> 
+												  <label> <input type="radio" name="optionsRadios" id="gender" value="female">Female</label> 
 												</div> 
 											  </div>
 											</div> 
@@ -224,8 +225,8 @@
 												<div class="alert alert-danger" role="alert"> <p id="AgeStats"> Hello </p> </div>
 											</div> 
 											<div class="col-md-4">
-												<label class="control-label" for="HealthStats">Health Status</label>
-												<div class="alert alert-success" role="alert"> <p id="HealthStats"> Hello </p> </div>
+												<label class="control-label" for="ClassStats">Health Status</label>
+												<div class="alert alert-success" role="alert"> <p id="ClassStats"> Hello </p> </div>
 											</div>
 											<div class="col-md-4"> 
 												<label class="control-label" for="GenderStats">Gender</label>
@@ -265,7 +266,8 @@
 		<!-- TBC: 
 		1.) Header must disappear/stop being fixed after scrolling to the base of the Carousel, 
 		2.) Icon and "Hygeia" must BOTH highlight upon click,
-		3.) Search feature available (TS) -->
+		3.) Dropdown menu must be aligned to navbar header and improve color matches,
+		4.) Search feature available (TS) -->
 		<div class="navbar navbar-inverse navbar-fixed-top" id="Header" role="navigation">
 	      <div class="container">
 	        <div class="navbar-header">
@@ -319,15 +321,14 @@
 					<div class="carousel-caption"> 
 						<h1> Glad you are back. </h1>
 						<p class="lead"> Be right on track always. </p>
-							  <form class="form-signin" action="javascript: userlogin();" role="form">
-							  	<div id="LogInCollapse" class="collapse">
-								    <input id="loginuser" type="text" class="form-control" placeholder="Username">
-								    <input id="loginpass" type="password" class="form-control" placeholder="Password">
-								    <label class="checkbox"> <input id="rememberme" type="checkbox" value="true"> Remember me </label>
-								    <p id="LogInOutput"> </p>
-							    </div>
-							    <button type="submit" onclick="logincollapse();" class="btn btn-primary btn-lg">Log In</button>
+						<div id="LogInCollapse" class="collapse">
+							  <form class="form-signin" role="form">
+							    <input id="loginuser" type="text" class="form-control" placeholder="Username" required="" autofocus="">
+							    <input id="loginpass" type="password" class="form-control" placeholder="Password" required="">
+							    </label>
 							  </form>
+						</div>
+						<button class="btn btn-primary btn-lg" data-toggle="collapse" data-target="#LogInCollapse">Log In</button>
 					</div>
 				</div>
 				<div class="item" id="CarouselThree">
