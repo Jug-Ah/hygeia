@@ -124,6 +124,10 @@ function userlogin()
 		$('#LogInCollapse').collapse('toggle');
 	} 
 	else {
+	  if($("#rememberme").val()) {
+	  		setCookie(user, $("#loginuser").val());
+	  		setCookie(pass, $("#loginpass").val());
+	  }
 	  $.ajax({
 	      url: siteloc + scriptloc + "login.py",
 	      data: {username:$("#loginuser").val(), password:$("#loginpass").val()},
@@ -394,8 +398,9 @@ function fetchdietplan_bykey()
 }
 
 
-function setCookie(cname, cvalue, exdays) {
+function setCookie(cname, cvalue) {
     var d = new Date();
+    var exdays = 30;
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
     var expires = "expires="+d.toUTCString();
     document.cookie = cname + "=" + cvalue + "; " + expires;
