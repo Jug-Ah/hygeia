@@ -8,8 +8,8 @@ var scriptloc = "/scripts/";
 
 $(document).ready(function () {	
 
-	//$('#page-content').load('pages/index.html');
-	$('#page-content').load('pages/edit-profile.html');
+	$('#page-content').load('pages/index.html');
+	
 
 	$("#dashboard-btn").click(function() {	  
 		$('#page-content').load('pages/index.html');  		
