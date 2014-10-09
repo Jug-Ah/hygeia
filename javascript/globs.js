@@ -235,7 +235,7 @@ function fetchprogresshistoryof()
       data: {userID:sessionStorage.id},
       dataType: 'json',
       success: function (res) {
-                  var agebracket = "Your bracket is " + res[0][5];
+                  var agebracket = "Your are " + res[0][5];
                   var healthstatus = "You are " + res[0][3];
                   var gender = "You are " + sessionStorage.gender;
 
@@ -415,4 +415,36 @@ function getCookie(cname) {
         if (c.indexOf(name) != -1) return c.substring(name.length,c.length);
     }
     return "";
+}
+
+function generatefitnessplan()
+{
+  $.ajax({
+      url: siteloc + scriptloc + "generateplan.py",
+      data: {userID:sessionStorage.id},
+	  async: true,
+      dataType: 'json',
+      success: function (res) {
+					console.log("Successfully added personal fitness plan.");
+              }
+    });
+  	$('#generate').prop('disabled',true);
+}
+
+function fetchpersonalplan()
+{
+  $.ajax({
+      url: siteloc + scriptloc + "getpersonalfitnessplan.py",
+      data: {userID:sessionStorage.id},
+      dataType: 'json',
+      success: function (res) {
+                  var EPlan = res[0][0];
+                  var DPlan = res[0][1];
+
+
+                  $("#ExPlan").html(EPlan);
+                  $("#DiPlan").html(DPlan);
+              }
+    });
+  	$('#Plan').collapse('show');
 }
