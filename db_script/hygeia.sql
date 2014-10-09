@@ -1,23 +1,23 @@
-create extension pgcrypto schema public version 1.0;
+create extension pgcrypto schema public version '1.0';
 
 create table useraccount (     
-	userid serial NOT NULL primary key,
-	username text,
-	password text,
-	email text
+  userid serial NOT NULL primary key,
+  username text,
+  password text,
+  email text
 );
 
 create or replace 
-	function set_useraccount(p_username text, p_userpass text, p_useremail text)
-	returns int as
-	
+  function set_useraccount(p_username text, p_userpass text, p_useremail text)
+  returns int as
+  
 $$
    declare
    id int;
    begin
-	    insert into useraccount(username, password, email) values
-		    (p_username, crypt(p_userpass, gen_salt('bf')), p_useremail) returning userid into id;
-		return id;
+      insert into useraccount(username, password, email) values
+        (p_username, crypt(p_userpass, gen_salt('bf')), p_useremail) returning userid into id;
+    return id;
    end;
    
 $$
@@ -39,7 +39,7 @@ $$
     begin
       insert into personalinfo(userId, fullname, birthday,gender) values
         ( userId,  fullname,  birthday, gender);
-	  return 'OK';
+    return 'OK';
     end;
 
 $$
@@ -60,35 +60,35 @@ $$
 
 
 create table progressrecord  (
-	progrecID serial primary key,
-	userID int references useraccount(userid),
-	height decimal(5,2),
-	weight decimal(5,2),
-	bmi decimal(4,2),
-	healthStatus text,
-	age int,
-	ageBracket text,
-	changePercentage decimal(4,2)	
+  progrecID serial primary key,
+  userID int references useraccount(userid),
+  height decimal(5,2),
+  weight decimal(5,2),
+  bmi decimal(4,2),
+  healthStatus text,
+  age int,
+  ageBracket text,
+  changePercentage decimal(4,2) 
 );
 
 
 create or replace
-	function set_progressrecord(p_userID int, p_height decimal(5,2), p_weight decimal(5,2), p_bmi decimal(4,2), p_healthStatus text, p_age int, p_ageBracket text, p_changePercentage decimal(4,2))
-	returns text as
+  function set_progressrecord(p_userID int, p_height decimal(5,2), p_weight decimal(5,2), p_bmi decimal(4,2), p_healthStatus text, p_age int, p_ageBracket text, p_changePercentage decimal(4,2))
+  returns text as
 
 $$
   begin
-	 insert into progressrecord(userID, height, weight, bmi, healthStatus, age, ageBracket, changePercentage) values
-	 (p_userID, p_height, p_weight, p_bmi, p_healthStatus, p_age, p_ageBracket, p_changePercentage);
+   insert into progressrecord(userID, height, weight, bmi, healthStatus, age, ageBracket, changePercentage) values
+   (p_userID, p_height, p_weight, p_bmi, p_healthStatus, p_age, p_ageBracket, p_changePercentage);
      return 'OK';
-  end;	
+  end;  
 $$
   language 'plpgsql';
 
   
 create or replace function
-	get_progressrecord(in int, out decimal(5,2), out decimal(5,2), out decimal(4,2), out text, out int, out text, out decimal(4,2))
-	returns setof record as
+  get_progressrecord(in int, out decimal(5,2), out decimal(5,2), out decimal(4,2), out text, out int, out text, out decimal(4,2))
+  returns setof record as
 
 $$
     select height, weight, bmi, healthStatus, age, ageBracket, changePercentage from progressrecord
@@ -157,7 +157,7 @@ $$
    
 create table personalfitnessplan(
     userId int references useraccount(userid),
-	pfpid serial primary key,
+  pfpid serial primary key,
     personalDietPlan text,
     personalExercisePlan text
 );
