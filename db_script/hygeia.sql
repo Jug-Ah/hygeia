@@ -19,7 +19,6 @@ $$
         (p_username, crypt(p_userpass, gen_salt('bf')), p_useremail) returning userid into id;
     return id;
    end;
-   
 $$
    language 'plpgsql';
    
@@ -41,10 +40,8 @@ $$
         ( userId,  fullname,  birthday, gender);
     return 'OK';
     end;
-
 $$
   language  'plpgsql';
---how to use
 
 
 create or replace function
@@ -52,11 +49,9 @@ create or replace function
      returns setof record as
 $$
      select fullname, birthday, gender from personalinfo
-     where userId = $1;
-        
+     where userId = $1;   
 $$
   language  'sql';
-
 
 
 create table progressrecord  (
@@ -104,11 +99,6 @@ create table fitnessplan(
   dietPlan text,
   constraint fitnessPlanPk primary key(gender, ageBracket, healthStatus)
 );
-
--- shortcuts used on plans
--- 1=male, 2=female
--- a=teen, b=young_adult, c=adult
--- x=underweight, y=normal, z=overweight
 
 insert into fitnessplan(gender, ageBracket, healthStatus, exercisePlan, dietPlan)
    values ('male', 'teen', 'underweight', 'exercise plan 1ax', 'diet plan 1ax'),
