@@ -1,3 +1,5 @@
+create extension pgcrypto schema public version 1.0;
+
 create table useraccount (     
 	userid serial NOT NULL primary key,
 	username text,
@@ -182,16 +184,17 @@ $$
 $$
   language 'sql';
 
-CREATE OR REPLACE FUNCTION login_check(text, text)
-  RETURNS boolean AS
+create or replace function login_check(text, text)
+  returns boolean as
   
-$func$
-declare 
-ret boolean;
-curr text;
-BEGIN
-   SELECT password FROM useraccount WHERE username = $1 INTO curr;
-   SELECT password = crypt($2, curr) FROM useraccount where username = $1 INTO ret;   
-   return ret;
-END
-$func$ LANGUAGE plpgsql;
+$$
+  declare 
+  ret boolean;
+  curr text;
+  begin
+     select password from useraccount where username = $1 INTO curr;
+     select password = crypt($2, curr) from useraccount where username = $1 INTO ret;   
+     return ret;
+  end
+$$ 
+  language 'plpgsql';

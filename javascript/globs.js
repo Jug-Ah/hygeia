@@ -124,10 +124,6 @@ function userlogin()
 		$('#LogInCollapse').collapse('toggle');
 	} 
 	else {
-	  if($("#rememberme").val()) {
-	  		setCookie(user, $("#loginuser").val());
-	  		setCookie(pass, $("#loginpass").val());
-	  }
 	  $.ajax({
 	      url: siteloc + scriptloc + "login.py",
 	      data: {username:$("#loginuser").val(), password:$("#loginpass").val()},
