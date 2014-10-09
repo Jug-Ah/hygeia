@@ -18,11 +18,6 @@
 	<body>
   
 		<!-- Register Modal -->
-		<!-- TBC: 
-		1.) Tabs be browsable "back" upon after form submission,
-		2.) Change tab names to an appropriate one,
-		3.) Add loading icon feature for username and email check,
-		4.) Improve UI (TS) -->
 		<div class="modal fade" id="SignUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog" id="ModalDialog">
 				<div class="modal-content">
@@ -177,27 +172,29 @@
 											</div>
 										</div> <br>
 										<label class="control-label" for="gender">Gender:</label>
+										<fieldset>
 										<div class="controls"> 
 											<div class="row">
 											  <div class="col-md-2"> 
 												<div class="radio"> 
-												  <label> <input type="radio" name="optionsRadios" id="gender" value="male">Male</label> 
+												  <label> <input type="radio" name="gender" id="gender" value="male">Male</label> 
 												</div>
 											  </div> 
 											  <div class="col-md-2"> 
 												<div class="radio"> 
-												  <label> <input type="radio" name="optionsRadios" id="gender" value="female">Female</label> 
+												  <label> <input type="radio" name="gender" id="gender" value="female">Female</label> 
 												</div> 
 											  </div>
 											</div> 
 										</div> <br> <br>
+										</fieldset>
 										<button name="submit" id="save" value="" type="submit" class="btn btn-primary btn-block">Save</button>
 									</div> 
 								</form> 
 							</div>
 							<!-- Health Stats -->
 							<div class="tab-pane fade" id="HealthStats"> <br> <br> 
-								<form class="center form" id="form-userrecord" method="post" action="javascript: addprogressrecord(); fetchprogresshistoryof();">
+								<form class="center form" id="form-userrecord" method="post" action="javascript: addprogressrecord(); ">
 									<div class="control-group">
 										<div class="controls"> <div class="row">
 											<div class="col-md-6"> 
@@ -222,20 +219,19 @@
 									 <div class="row">
 											<div class="col-md-4"> 
 												<label class="control-label" for="AgeStats">Age Bracket</label>
-												<div class="alert alert-danger" role="alert"> <p id="AgeStats"> Hello </p> </div>
+												<div class="alert alert-danger" role="alert"> <p id="AgeStats"> You are </p> </div>
 											</div> 
 											<div class="col-md-4">
 												<label class="control-label" for="ClassStats">Health Status</label>
-												<div class="alert alert-success" role="alert"> <p id="ClassStats"> Hello </p> </div>
+												<div class="alert alert-success" role="alert"> <p id="ClassStats"> You are </p> </div>
 											</div>
 											<div class="col-md-4"> 
 												<label class="control-label" for="GenderStats">Gender</label>
-												<div class="alert alert-warning" role="alert"> <p id="GenderStats"> Hello </p> </div>
+												<div class="alert alert-warning" role="alert"> <p id="GenderStats"> You are </p> </div>
 											</div>  
 									  </div>
 									  <button id="gotit" class="btn btn-primary btn-block">Got It!</button> 
 								  </div>
-								  		<p id="statstarget"> </p>
 								</div>
 							</div>
 							<!-- Plan Generator -->
@@ -268,11 +264,6 @@
 		</div>
 		
 		<!-- Header  --> 
-		<!-- TBC: 
-		1.) Header must disappear/stop being fixed after scrolling to the base of the Carousel, 
-		2.) Icon and "Hygeia" must BOTH highlight upon click,
-		3.) Dropdown menu must be aligned to navbar header and improve color matches,
-		4.) Search feature available (TS) -->
 		<div class="navbar navbar-inverse navbar-fixed-top" id="Header" role="navigation">
 	      <div class="container">
 	        <div class="navbar-header">
@@ -326,14 +317,15 @@
 					<div class="carousel-caption"> 
 						<h1> Glad you are back. </h1>
 						<p class="lead"> Be right on track always. </p>
-						<div id="LogInCollapse" class="collapse">
-							  <form class="form-signin" role="form">
-							    <input id="loginuser" type="text" class="form-control" placeholder="Username" required="" autofocus="">
-							    <input id="loginpass" type="password" class="form-control" placeholder="Password" required="">
-							    </label>
-							  </form>
-						</div>
-						<button class="btn btn-primary btn-lg" data-toggle="collapse" data-target="#LogInCollapse">Log In</button>
+						<form class="form-signin" action="javascript: logincollapse();" role="form">
+							  	<div id="LogInCollapse" class="collapse">
+							  		<input id="loginuser" type="text" class="form-control" placeholder="Username">
+								    <input id="loginpass" type="password" class="form-control" placeholder="Password">
+								    <label class="checkbox"> <input id="rememberme" type="checkbox" value="true"> Remember me </label>
+								    <p id="LogInOutput"> </p>
+							    </div>
+					    <button type="submit" class="btn btn-primary btn-lg">Log In</button>
+					  </form>
 					</div>
 				</div>
 				<div class="item" id="CarouselThree">
@@ -344,8 +336,7 @@
 						<button class="btn btn-warning btn-lg" data-toggle="modal" data-target="">Browse Plans</button>
 					</div>
 				</div>
-			</div>
-			<!-- Controls -->
+			</div>			<!-- Controls -->
 			<a class="left carousel-control" href="#Carousel" role="button" data-slide="prev">
 			<span class="glyphicon glyphicon-chevron-left"></span>
 			</a>
@@ -475,12 +466,13 @@
 			  </div>
 			  </div>
 			   <hr class="footer-divider">
-		</div>
-		  <!-- Footer -->
-		<div class="footer">
-			<p class="pull-right"> <a href="#">Terms of Use</a> · <a href="#">Privacy</a> · <a href="#">Back to top</a></p>
-			<p>© 2014 Jug-Ah Inc. · <a href="#">About Us</a> · <a href="#">Contact Us</a> · <a href="#">Help?</a></p>
-		</div>
+			</div>
+
+			<!-- Footer -->
+			<div class="footer">
+				<p class="pull-right"> <a href="#">Terms of Use</a> · <a href="#">Privacy</a> · <a href="#">Back to top</a></p>
+				<p>© 2014 Jug-Ah Inc. · <a href="#">About Us</a> · <a href="#">Contact Us</a> · <a href="#">Help?</a></p>
+			</div>
 	    </div> 
 
 	</body>

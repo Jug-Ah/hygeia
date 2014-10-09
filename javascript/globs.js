@@ -7,6 +7,10 @@ $(document).ready(function () {
 		return this.optional(element) || /^[a-z\s]+$/i.test(value);
 	}, "Must be composed of letters only."); 
 
+	jQuery.validator.addMethod("valuenotequals", function (value, element, arg) {
+	  	return arg != value;
+	}, "This field is required.");
+
     $('#form-signup').validate({
         rules: {
             username: {
@@ -64,13 +68,16 @@ $(document).ready(function () {
                 lettersonly: true
             },
             month: {
-                required: true
+                required: true,
+                valuenotequals: "00"
             },
 			day: {
-                required: true
+                required: true,
+                valuenotequals: "00"
             },
 			year: {
-                required: true
+                required: true,
+                valuenotequals: "00"
             },	
 			gender: {
 				required: true
@@ -112,6 +119,7 @@ function logincollapse() {
 		$('#LogInCollapse').collapse({
 			toggle: false
 		});
+		userlogin();
 	}
 	else {
 		$('#LogInCollapse').collapse('toggle');
@@ -120,13 +128,9 @@ function logincollapse() {
 
 function userlogin()
 {
-	if (!$("#loginuser").val() && !$("#loginpass").val()) {
-		$('#LogInCollapse').collapse('toggle');
-	} 
-	else {
-	  if($("#rememberme").val()) {
-	  		setCookie(user, $("#loginuser").val());
-	  		setCookie(pass, $("#loginpass").val());
+	if($("#rememberme").val()) {
+  		setCookie("user", $("#loginuser").val());
+  		setCookie("pass", $("#loginpass").val());
 	  }
 	  $.ajax({
 	      url: siteloc + scriptloc + "login.py",
@@ -147,7 +151,6 @@ function userlogin()
 					}				      
 	            }
 	    });
-	}
 }
 
 function adduser()
@@ -210,24 +213,6 @@ function setpersonalinfo()
 	});
 }
 
-function addprogressrecord()
-{
-  $.ajax({
-		url: siteloc + scriptloc + "setprogressrecord.py",
-		data: {userID:sessionStorage.id, 
-			height:$("#height").val(), 
-			weight:$("#weight").val()},
-		async: true,
-		dataType: 'json',
-		success: function (res) {
-					console.log("Successfully added progress record.");
-              }
-    });
-	$('#formulate').prop('disabled',true);
-	$('#height').prop('disabled',true);
-	$('#weight').prop('disabled',true);
-}
-
 function fetchprogresshistoryof()
 {
   $.ajax({
@@ -249,6 +234,25 @@ function fetchprogresshistoryof()
 	  e.preventDefault()
 	  $(this).tab('show')
 	});
+}
+
+function addprogressrecord()
+{
+  $.ajax({
+		url: siteloc + scriptloc + "setprogressrecord.py",
+		data: {userID:sessionStorage.id, 
+			height:$("#height").val(), 
+			weight:$("#weight").val()},
+		async: true,
+		dataType: 'json',
+		success: function (res) {
+					console.log("Successfully added progress record.");
+					fetchprogresshistoryof();
+              }
+    });
+	$('#formulate').prop('disabled',true);
+	$('#height').prop('disabled',true);
+	$('#weight').prop('disabled',true);
 }
 
 function set_personalfitnessplan(id, personalDietPlan, personalExercisePlan)
