@@ -240,21 +240,26 @@
 							</div>
 							<!-- Plan Generator -->
 							<div class="tab-pane fade" id="PlanGenerator"> <br> <br>
-								<div class="panel-group" id="accordion">
-									<button name="submit" id="generatediet" value="" type="submit" class="btn btn-primary btn-block" href="#UserProfile" data-toggle="collapse" data-target="#dietplan">Generate Diet Plan</button>
-									<div id="dietplan" class="panel-collapse collapse">
-									  <div class="panel-body">
-										Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-									  </div>
-									</div> <br>
-									<button name="submit" id="generatefitness" value="" type="submit" class="btn btn-primary btn-block" href="#UserProfile" data-toggle="collapse" data-target="#fitnessplan">Generate Exercise Plan</button>
-									<div id="fitnessplan" class="panel-collapse collapse">
-									  <div class="panel-body">
-										Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-									  </div>
+								<form class="center form" id="form-generatePlan" method="post" action="javascript: generatefitnessplan(); fetchpersonalplan();">
+									<button name="submit" id="generate" value="" type="submit" class="btn btn-primary btn-block">Generate Plan</button>
+								</form>
+								<div id="Plan" class="panel-collapse collapse">
+									<div class="panel-body" id="PanelBody">
+										 <p id="target"> </p>
+										 <div class="row">
+												<div class="col-md-4"> 
+													<label class="control-label" for="ExPlan">Exercise Plan</label>
+													<div class="alert alert-danger" role="alert"> <p id="ExPlan"> Hello </p> </div>
+												</div> 
+												<div class="col-md-4">
+													<label class="control-label" for="DiPlan">Diet Plan</label>
+													<div class="alert alert-success" role="alert"> <p id="DiPlan"> Hello </p> </div>
+												</div>  
+										 </div>
 									</div>
-								</div>	
-								<button name="submit" id="submit" value="" type="submit" class="btn btn-primary btn-block" href="#">Proceed</button> 
+			
+								</div>
+								<button name="submit" id="submit" value="" type="submit" class="btn btn-primary btn-block" href="#">Finish</button> 
 							</div>
 						</div>
 					</div>

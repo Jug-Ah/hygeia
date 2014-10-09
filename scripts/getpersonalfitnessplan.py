@@ -1,17 +1,18 @@
-from dosql_a import *
+from dosql import *
 import cgi
 import simplejson as json
+import re
 
-
-def index(req, userId):
-    userId = cgi.escape(userId)
+def index(req, userID):
+	userID = cgi.escape(userID)
 	
-    x = doSql()
-    rets = x.execqry("select get_personalfitnessplan('" + userId + "');", False)
-    result = []
-    for ret in rets:
-        stringed = map(str, ret)
-        result.append(stringed)
+	get = doSql()
+	rec = get.execqry("select * from get_personalfitnessplan('" + userID + "');", False)
 
-    return json.dumps(result)
+	result = []
+	for a in rec:
+		stringed = map(str, a)
+		result.append(stringed)
+
+	return json.dumps(result)
 	
