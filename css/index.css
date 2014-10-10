@@ -4,6 +4,10 @@ body {
   color: #3a3a3a;
 }
 
+.error {
+    color: #a94442;
+}
+
 /* Register Modal */
 
 #ModalDialog {

@@ -7,10 +7,15 @@ $(document).ready(function () {
 		return this.optional(element) || /^[a-z\s]+$/i.test(value);
 	}, "Must be composed of letters only."); 
 
+	jQuery.validator.addMethod("valuenotequals", function (value, element, arg) {
+	  	return arg != value;
+	}, "This field is required.");
+
+
     $('#form-signup').validate({
         rules: {
             username: {
-                minlength: 3,
+                minlength: 5,
                 maxlength: 15,
                 required: true,
                 remote: {
@@ -20,15 +25,6 @@ $(document).ready(function () {
 			        }
 				}
             },
-            password: {
-                minlength: 3,
-                maxlength: 15,
-                required: true,
-            },
-			cpassword: {
-				required: true,
-				equalTo: "#password"
-			},			
 			email: {
 				required: true,
 				email: true,
@@ -39,6 +35,15 @@ $(document).ready(function () {
 			        }
                 }
 			},
+            password: {
+            	required: true,
+                minlength: 5,
+                maxlength: 15
+            },
+			cpassword: {
+				required: true,
+				equalTo: "#password"
+			},			
         },
         messages: {
 		    username: {
@@ -49,10 +54,10 @@ $(document).ready(function () {
 		    }
 		},
         highlight: function (element) {
-            $(element).closest('.control-group').addClass('has-error');
+            $(element).closest('.controls').addClass('has-error');
         },
         success: function (element) {
-            element.closest('.control-group').removeClass('has-error');
+            $(element).closest('.controls').removeClass('has-error');
         }
     });
 	$('#form-userinfo').validate({
@@ -64,23 +69,33 @@ $(document).ready(function () {
                 lettersonly: true
             },
             month: {
-                required: true
+                required: true,
+                valuenotequals: "00"
             },
 			day: {
-                required: true
+                required: true,
+                valuenotequals: "00"
             },
 			year: {
-                required: true
+                required: true,
+                valuenotequals: "00"
             },	
 			gender: {
 				required: true
 			},
         },
+        errorPlacement: function(error, element) {
+            if (element.attr("type") == "radio") {
+                error.insertAfter("#genderrow");
+            } else {
+                error.insertAfter(element);
+            }
+        },
         highlight: function (element) {
-            $(element).closest('.control-group').addClass('has-error');
+            $(element).closest('.controls').addClass('has-error');
         },
         success: function (element) {
-            element.closest('.control-group').removeClass('has-error');
+            $(element).closest('.controls').removeClass('has-error');
         }
     });
 	$('#form-userrecord').validate({
@@ -99,10 +114,10 @@ $(document).ready(function () {
             },
 		 },
         highlight: function (element) {
-            $(element).closest('.control-group').addClass('has-error');
+            $(element).closest('.controls').addClass('has-error');
         },
         success: function (element) {
-            element.closest('.control-group').removeClass('has-error');
+            $(element).closest('.controls').removeClass('has-error');
         }
     });
 });
@@ -119,37 +134,33 @@ function logincollapse() {
 	}
 }
 
-function userlogin()
-{
-	if (!$("#loginuser").val() && !$("#loginpass").val()) {
-		$('#LogInCollapse').collapse('toggle');
-	} 
-	else {
-	  $.ajax({
-	      url: siteloc + scriptloc + "login.py",
-	      data: {username:$("#loginuser").val(), password:$("#loginpass").val()},
-	      dataType: 'json',
-		  async: true,
-	      success: function (res) {	
-					if (res == true) {					
-					    console.log("Successfully logged in!");
-						$('#login').prop('disabled',true);
-						$('#loginuser').prop('disabled',true);
-						$('#loginpass').prop('disabled',true);
-						//alert("Successfully logged in!");
-						window.location = "http://localhost/Hygeia/dashboard.html";
-					} else {
-						console.log("Invalid login details.");
-						$("#LogInOutput").html("Invalid login details.");
-					}				      
-	            }
-	    });
-	}
+function userlogin() {
+	/*if (!$("#rememberme").val() == "true") {
+		setCookie("user", $("#loginuser").val());
+		setCookie("pass", $("#loginpass").val())
+	} */
+  $.ajax({
+      url: siteloc + scriptloc + "login.py",
+      data: {username:$("#loginuser").val(), password:$("#loginpass").val()},
+      dataType: 'json',
+	  async: true,
+      success: function (res) {	
+				if (res == true) {					
+				    console.log("Successfully logged in!");
+					$('#login').prop('disabled',true);
+					$('#loginuser').prop('disabled',true);
+					$('#loginpass').prop('disabled',true);
+					//alert("Successfully logged in!");
+					window.location = "http://localhost/Hygeia/dashboard.html";
+				} else {
+					console.log("Invalid login details.");
+					$("#LogInOutput").html("Invalid login details.");
+				}				      
+            }
+    });
 }
 
-
-function adduser()
-{
+function adduser() {
   $.ajax({
       url: siteloc + scriptloc + "adduser.py",
       data: {username:$("#username").val(), password:$("#password").val(), email:$("#email").val()},
@@ -180,15 +191,14 @@ function adduser()
 	});
 }
 
-function setpersonalinfo()
-{
-  sessionStorage.gender = $("#gender").val();
+function setpersonalinfo() {
+  sessionStorage.gender = $('input:radio[name=theme]:checked').val()));
   $.ajax({
 		url: siteloc + scriptloc + "setpersonalinfo.py",
-		data: {userID:sessionStorage.id, 
+		data: {userID:getCookie("id"), 
 			fullname:$("#fullname").val(),
 			birthday:$("#year").val() + "-" + $("#month").val() + "-" + $("#day").val(),
-			gender:$("#gender").val() }, 
+			gender:getCookie("gender")}, 
 		async: true,
 		dataType: 'json',
 		success: function (res) {
@@ -208,34 +218,15 @@ function setpersonalinfo()
 	});
 }
 
-function addprogressrecord()
-{
-  $.ajax({
-		url: siteloc + scriptloc + "setprogressrecord.py",
-		data: {userID:sessionStorage.id, 
-			height:$("#height").val(), 
-			weight:$("#weight").val()},
-		async: true,
-		dataType: 'json',
-		success: function (res) {
-					console.log("Successfully added progress record.");
-              }
-    });
-	$('#formulate').prop('disabled',true);
-	$('#height').prop('disabled',true);
-	$('#weight').prop('disabled',true);
-}
-
-function fetchprogresshistoryof()
-{
+function fetchprogresshistoryof() {
   $.ajax({
       url: siteloc + scriptloc + "getprogressrecord.py",
-      data: {userID:sessionStorage.id},
+      data: {userID:getCookie("id")},
       dataType: 'json',
       success: function (res) {
                   var agebracket = "Your are " + res[0][5];
                   var healthstatus = "You are " + res[0][3];
-                  var gender = "You are " + sessionStorage.gender;
+                  var gender = "You are " + getCookie("gender");
 
                   $("#AgeStats").html(agebracket);
                   $("#ClassStats").html(healthstatus);
@@ -249,8 +240,25 @@ function fetchprogresshistoryof()
 	});
 }
 
-function set_personalfitnessplan(id, personalDietPlan, personalExercisePlan)
-{
+function addprogressrecord() {
+  $.ajax({
+		url: siteloc + scriptloc + "setprogressrecord.py",
+		data: {userID:getCookie("id"), 
+			height:$("#height").val(), 
+			weight:$("#weight").val()},
+		async: true,
+		dataType: 'json',
+		success: function (res) {
+					console.log("Successfully added progress record.");
+					fetchprogresshistoryof();
+              }
+    });
+	$('#formulate').prop('disabled',true);
+	$('#height').prop('disabled',true);
+	$('#weight').prop('disabled',true);
+}
+
+function set_personalfitnessplan(id, personalDietPlan, personalExercisePlan) {
   $.ajax({
       url: siteloc + scriptloc + "personalfitnessplan.py",
 	  data: {id: p_id, personalDietPlan: p_personalDietPlan, personalExercisePlan: p_personalExercisePlan},
@@ -277,8 +285,7 @@ function set_personalfitnessplan(id, personalDietPlan, personalExercisePlan)
     });
 }
 
-function fetchfitnessplan_bykey()
-{
+function fetchfitnessplan_bykey() {
   $.ajax({
       url: siteloc + scriptloc + "getfitnessplan_bykey.py",
       data: {gender:$("#gender").val(),
@@ -317,8 +324,7 @@ function fetchfitnessplan_bykey()
     });
 }
 
-function fetchexerciseplan_bykey()
-{
+function fetchexerciseplan_bykey() {
   $.ajax({
       url: siteloc + scriptloc + "getexerciseplan_bykey.py",
       data: {gender:$("#gender").val(),
@@ -356,8 +362,7 @@ function fetchexerciseplan_bykey()
     });
 }
 
-function fetchdietplan_bykey()
-{
+function fetchdietplan_bykey() {
   $.ajax({
       url: siteloc + scriptloc + "getdietplan_bykey.py",
       data: {gender:$("#gender").val(),
@@ -395,7 +400,6 @@ function fetchdietplan_bykey()
     });
 }
 
-
 function setCookie(cname, cvalue) {
     var d = new Date();
     var exdays = 30;
@@ -415,11 +419,10 @@ function getCookie(cname) {
     return "";
 }
 
-function generatefitnessplan()
-{
+function generatefitnessplan() {
   $.ajax({
       url: siteloc + scriptloc + "generateplan.py",
-      data: {userID:sessionStorage.id},
+      data: {userID:getCookie("id")},
 	  async: true,
       dataType: 'json',
       success: function (res) {
@@ -429,11 +432,10 @@ function generatefitnessplan()
   	$('#generate').prop('disabled',true);
 }
 
-function fetchpersonalplan()
-{
+function fetchpersonalplan() {
   $.ajax({
       url: siteloc + scriptloc + "getpersonalfitnessplan.py",
-      data: {userID:sessionStorage.id},
+      data: {userID:getCookie("id")},
       dataType: 'json',
       success: function (res) {
                   var EPlan = res[0][0];
