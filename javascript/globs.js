@@ -112,6 +112,7 @@ function logincollapse() {
 		$('#LogInCollapse').collapse({
 			toggle: false
 		});
+		userlogin();
 	}
 	else {
 		$('#LogInCollapse').collapse('toggle');
