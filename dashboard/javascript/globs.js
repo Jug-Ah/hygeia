@@ -7,8 +7,9 @@ var scriptloc = "/scripts/";
 
 
 $(document).ready(function () {	
-
-	$('#page-content').load('pages/profile.html');
+	
+	$('#page-content').html("hey");
+	//$('#page-content').load('pages/profile.html');
 	
 
 	$("#dashboard-btn").click(function() {	  
@@ -150,6 +151,29 @@ function addprogressrecord()
 	$('#weight').prop('disabled',true);
 }
 
+function loadProfile()
+{
+  
+  $.ajax({
+      url:  "http://localhost/hygeia/scripts/getpersonalinfo.py",  // EDIT THIS WHEN TRANSFERRING DASHBOARD TO HYGEIA MAIN FOLDER
+      data: {userID:sessionStorage.id},
+      dataType: 'json',
+      success: function (res) {
+				alert(res)
+				var name = res[0][2]
+				var bday = res[0][3]
+				var gender = res[0][4]
+				
+                $("#complete-name").html(name);
+                
+              }
+    });
+  	$('#Stats').collapse('show');
+	$('#RegisterTab a[href="#PlanGenerator"]').click(function (e) {
+	  e.preventDefault()
+	  $(this).tab('show')
+	});
+}
 function fetchprogresshistoryof()
 {
   $.ajax({

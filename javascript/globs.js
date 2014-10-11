@@ -194,6 +194,32 @@ function adduser() {
 	});
 }
 
+function loadProfile()
+{
+  window.location = "http://localhost/Hygeia/dashboard/index.html";
+  
+  $.ajax({
+      url:  "http://localhost/Hygeia/" + "getpersonalinfo.py",  // EDIT THIS WHEN TRANSFERRING DASHBOARD TO HYGEIA MAIN FOLDER
+      data: {userID:sessionStorage.id},
+      dataType: 'json',
+      success: function (res) {
+				alert(res)
+				var agebracket = "Your bracket is " + res[0][5];
+                  var healthstatus = "You are " + res[0][3];
+                  var gender = "You are " + sessionStorage.gender;
+
+                  $("#AgeStats").html(agebracket);
+                  $("#ClassStats").html(healthstatus);
+                  $("#GenderStats").html(gender);
+              }
+    });
+  	$('#Stats').collapse('show');
+	$('#RegisterTab a[href="#PlanGenerator"]').click(function (e) {
+	  e.preventDefault()
+	  $(this).tab('show')
+	});
+}
+
 function setpersonalinfo() {
   sessionStorage.gender = $('input:radio[name=gender]:checked').val();
   $.ajax({
