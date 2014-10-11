@@ -8,7 +8,7 @@ var scriptloc = "/scripts/";
 
 $(document).ready(function () {	
 
-	$('#page-content').load('pages/index.html');
+	$('#page-content').load('pages/profile.html');
 	
 
 	$("#dashboard-btn").click(function() {	  
@@ -43,36 +43,33 @@ function logincollapse() {
 	}
 }
 
-function userlogin()
-{
-	if (!$("#loginuser").val() && !$("#loginpass").val()) {
-		$('#LogInCollapse').collapse('toggle');
-	} 
-	else {
-	  if($("#rememberme").val()) {
-	  		setCookie(user, $("#loginuser").val());
-	  		setCookie(pass, $("#loginpass").val());
-	  }
-	  $.ajax({
-	      url: siteloc + scriptloc + "login.py",
-	      data: {username:$("#loginuser").val(), password:$("#loginpass").val()},
-	      dataType: 'json',
-		  async: true,
-	      success: function (res) {	
-					if (res == true) {					
-					    console.log("Successfully logged in!");
-						$('#login').prop('disabled',true);
-						$('#loginuser').prop('disabled',true);
-						$('#loginpass').prop('disabled',true);
-						//alert("Successfully logged in!");
-						window.location = "http://localhost/Hygeia/dashboard.html";
-					} else {
-						console.log("Invalid login details.");
-						$("#LogInOutput").html("Invalid login details.");
-					}				      
-	            }
-	    });
-	}
+function userlogin() {
+	/*if (!$("#rememberme").val() == "true") {
+		setCookie("user", $("#loginuser").val());
+		setCookie("pass", $("#loginpass").val())
+	} */
+  $.ajax({
+      url: siteloc + scriptloc + "login.py",
+      data: {username:$("#loginuser").val(), password:$("#loginpass").val()},
+      dataType: 'json',
+	  async: true,
+      success: function (res) {					
+				if (res[0] == true) {				
+					sessionStorage.id = res[1]								
+				    console.log("Successfully logged in!");
+					$('#login').prop('disabled',true);
+					$('#loginuser').prop('disabled',true);
+					$('#loginpass').prop('disabled',true);
+					//alert("Successfully logged in!");
+					window.location = "http://localhost/Hygeia/dashboard/index.html";
+				} else {
+				
+					console.log("Invalid login details.");
+					$("#LogInOutput").html("Invalid login details.");
+				}		
+				
+            }
+    });
 }
 
 function adduser()
@@ -160,7 +157,7 @@ function fetchprogresshistoryof()
       data: {userID:sessionStorage.id},
       dataType: 'json',
       success: function (res) {
-                  var agebracket = "Your bracket is " + res[0][5];
+				var agebracket = "Your bracket is " + res[0][5];
                   var healthstatus = "You are " + res[0][3];
                   var gender = "You are " + sessionStorage.gender;
 

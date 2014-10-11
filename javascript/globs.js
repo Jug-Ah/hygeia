@@ -144,8 +144,9 @@ function userlogin() {
       data: {username:$("#loginuser").val(), password:$("#loginpass").val()},
       dataType: 'json',
 	  async: true,
-      success: function (res) {	
-				if (res == true) {					
+      success: function (res) {					
+				if (res[0] == true) {				
+					sessionStorage.id = res[1]								
 				    console.log("Successfully logged in!");
 					$('#login').prop('disabled',true);
 					$('#loginuser').prop('disabled',true);
@@ -153,9 +154,11 @@ function userlogin() {
 					//alert("Successfully logged in!");
 					window.location = "http://localhost/Hygeia/dashboard/index.html";
 				} else {
+				
 					console.log("Invalid login details.");
 					$("#LogInOutput").html("Invalid login details.");
-				}				      
+				}		
+				
             }
     });
 }
