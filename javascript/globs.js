@@ -151,7 +151,7 @@ function userlogin() {
 					$('#loginuser').prop('disabled',true);
 					$('#loginpass').prop('disabled',true);
 					//alert("Successfully logged in!");
-					window.location = "http://localhost/Hygeia/dashboard.html";
+					window.location = "http://localhost/Hygeia/dashboard/index.html";
 				} else {
 					console.log("Invalid login details.");
 					$("#LogInOutput").html("Invalid login details.");
@@ -192,13 +192,13 @@ function adduser() {
 }
 
 function setpersonalinfo() {
-  sessionStorage.gender = $('input:radio[name=theme]:checked').val()));
+  sessionStorage.gender = $('input:radio[name=gender]:checked').val();
   $.ajax({
 		url: siteloc + scriptloc + "setpersonalinfo.py",
-		data: {userID:getCookie("id"), 
+		data: {userID:sessionStorage.id, 
 			fullname:$("#fullname").val(),
 			birthday:$("#year").val() + "-" + $("#month").val() + "-" + $("#day").val(),
-			gender:getCookie("gender")}, 
+			gender:sessionStorage.gender}, 
 		async: true,
 		dataType: 'json',
 		success: function (res) {
@@ -221,12 +221,12 @@ function setpersonalinfo() {
 function fetchprogresshistoryof() {
   $.ajax({
       url: siteloc + scriptloc + "getprogressrecord.py",
-      data: {userID:getCookie("id")},
+      data: {userID:sessionStorage.id},
       dataType: 'json',
       success: function (res) {
                   var agebracket = "Your are " + res[0][5];
                   var healthstatus = "You are " + res[0][3];
-                  var gender = "You are " + getCookie("gender");
+                  var gender = "You are " + sessionStorage.gender;
 
                   $("#AgeStats").html(agebracket);
                   $("#ClassStats").html(healthstatus);
@@ -243,16 +243,16 @@ function fetchprogresshistoryof() {
 function addprogressrecord() {
   $.ajax({
 		url: siteloc + scriptloc + "setprogressrecord.py",
-		data: {userID:getCookie("id"), 
+		data: {userID:sessionStorage.id, 
 			height:$("#height").val(), 
 			weight:$("#weight").val()},
 		async: true,
 		dataType: 'json',
 		success: function (res) {
 					console.log("Successfully added progress record.");
-					fetchprogresshistoryof();
               }
     });
+  	fetchprogresshistoryof();
 	$('#formulate').prop('disabled',true);
 	$('#height').prop('disabled',true);
 	$('#weight').prop('disabled',true);
@@ -422,20 +422,21 @@ function getCookie(cname) {
 function generatefitnessplan() {
   $.ajax({
       url: siteloc + scriptloc + "generateplan.py",
-      data: {userID:getCookie("id")},
+      data: {userID:sessionStorage.id},
 	  async: true,
       dataType: 'json',
       success: function (res) {
 					console.log("Successfully added personal fitness plan.");
               }
     });
+  	fetchpersonalplan();
   	$('#generate').prop('disabled',true);
 }
 
 function fetchpersonalplan() {
   $.ajax({
       url: siteloc + scriptloc + "getpersonalfitnessplan.py",
-      data: {userID:getCookie("id")},
+      data: {userID:sessionStorage.id},
       dataType: 'json',
       success: function (res) {
                   var EPlan = res[0][0];

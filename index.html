@@ -41,20 +41,20 @@
 							<div class="tab-pane fade in active" id="UserAccount"> <br> <br> 
 								<form class="center form" id="form-signup" method="post" action="javascript: adduser();">	
 									<div class="control-group">
-										<label class="control-label" for="username">Username:</label>
 										<div class="controls">
+											<label class="control-label" for="username">Username:</label>
 											<input name="username" id="username" value="" type="text" class="form-control" placeholder="Username">
 										</div> <br>
-										<label class="control-label" for="email">Email:</label>
 										<div class="controls">
+											<label class="control-label" for="email">Email:</label>
 											<input name="email" id="email" value="" type="text" class="form-control" placeholder="Email">
 										</div> <br>
-										<label class="control-label" for="password">Password:</label>
 										<div class="controls">
+											<label class="control-label" for="password">Password:</label>
 											<input name="password" id="password" value="" type="password" class="form-control" placeholder="Password">
 										</div> <br>
-										<label class="control-label" for="cpassword">Confirm Password:</label>
 										<div class="controls">
+											<label class="control-label" for="cpassword">Confirm Password:</label>
 											<input name="cpassword" id="cpassword" value="" type="password" class="form-control" placeholder="Confirm Password">
 										</div> <br>
 									</div> <br> 
@@ -65,12 +65,12 @@
 							<div class="tab-pane fade" id="PersonalInfo"> <br> <br> 
 								<form class="center form" id="form-userinfo" method="post" action="javascript:setpersonalinfo();">
 									<div class="control-group">
-										<label class="control-label" for="fullname">Full Name:</label>
 										<div class="controls">
+											<label class="control-label" for="fullname">Full Name:</label>
 											<input size="50" name="fullname" id="fullname" value="" type="text" class="form-control" placeholder="First Middle Last">
 										</div> <br>		
-										<label class="control-label" for="birthday">Birthday:</label>
-										<div class="controls"> 
+										<div class="controls">
+											<label class="control-label" for="birthday">Birthday:</label> 
 											<div class="row"> 
 												<div class="col-md-4" id="ColMonth">
 													<select class="form-control" name="month"  id="month">
@@ -171,9 +171,9 @@
 												</div>
 											</div>
 										</div> <br>
-										<label class="control-label" for="gender">Gender:</label>
 								        <fieldset>
 								        <div class="controls" id="gender"> 
+								        	<label class="control-label" for="gender">Gender:</label>
 								            <div class="row" id="genderrow">
 								              <div class="col-md-3"> 
 								                  <label class="radio-inline"> <input type="radio" name="gender" value="male">&nbsp;&nbsp;Male</label> 
@@ -194,14 +194,14 @@
 									<div class="control-group">
 										<div class="controls"> <div class="row">
 											<div class="col-md-6"> 
-												<label class="control-label" for="height">Height</label>
 												<div class="controls">
+													<label class="control-label" for="height">Height</label>
 													<input size="50" name="height" id="height" value="" type="text" class="form-control" placeholder="In Centimeters">
 												</div> <br>
 											</div> 
 											<div class="col-md-6">
-												<label class="control-label" for="weight">Weight</label>
 												<div class="controls">
+													<label class="control-label" for="weight">Weight</label>
 													<input size="50" name="weight" id="weight" value="" type="text" class="form-control" placeholder="In Kilograms">
 												</div> <br>
 											</div> </div> 
@@ -232,7 +232,7 @@
 							</div>
 							<!-- Plan Generator -->
 							<div class="tab-pane fade" id="PlanGenerator"> <br> <br>
-								<form class="center form" id="form-generatePlan" method="post" action="javascript: generatefitnessplan(); fetchpersonalplan();">
+								<form class="center form" id="form-generatePlan" method="post" action="javascript: generatefitnessplan();">
 									<button name="submit" id="generate" value="" type="submit" class="btn btn-primary btn-block">Generate Plan</button>
 								</form>
 								<div id="Plan" class="panel-collapse collapse">
@@ -248,10 +248,10 @@
 													<div class="alert alert-success" role="alert"> <p id="DiPlan"> Hello </p> </div>
 												</div>  
 										 </div>
+										 <button class="btn btn-primary btn-block" href="dashboard/index.html">Finish</button> 
 									</div>
-			
 								</div>
-								<button name="submit" id="submit" value="" type="submit" class="btn btn-primary btn-block" href="#">Finish</button> 
+								
 							</div>
 						</div>
 					</div>
