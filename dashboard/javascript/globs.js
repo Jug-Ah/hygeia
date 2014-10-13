@@ -23,7 +23,8 @@ $(document).ready(function () {
 	$("#profile-btn").click(function() {	  
 		$('#page-content').load('pages/profile.html');		
 		$("#profile-btn").attr("class","active");
-		$("#dashboard-btn").attr("class","");		
+		$("#fitnessplan-btn").attr("class","");		
+		$("#progressrecord-btn").attr("class","");		
 		loadProfile()
 	});
 
@@ -33,15 +34,17 @@ $(document).ready(function () {
 	
 	$("#fitnessplan-btn").click(function() {
 		$('#page-content').load('pages/fitnessplan.html');
+		$("#profile-btn").attr("class","");
 		$("#fitnessplan-btn").attr("class","active");
-		$("#dashboard-btn").attr("class","");		
+		$("#progressrecord-btn").attr("class","");		
 		loadPersonalPlan()
 	});
 
 	$("#progressrecord-btn").click(function() {
-		$('#page-content').load('pages/progressrecord.html');
+		$('#page-content').load('pages/progressrecord.html');		
+		$("#profile-btn").attr("class","");
+		$("#fitnessplan-btn").attr("class","");
 		$("#progressrecord-btn").attr("class","active");
-		$("#dashboard-btn").attr("class","");		
 		loadPersonalRecord()
 	});
   
