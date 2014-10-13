@@ -8,16 +8,17 @@ var scriptloc = "/scripts/";
 
 $(document).ready(function () {	
 	
-	//$('#page-content').html("hey");
+
 
 	$('#page-content').load('pages/profile.html');
 	loadProfile()
 
-	$("#dashboard-btn").click(function() {	  
-		$('#page-content').load('pages/index.html');  		
-		$("#profile-btn").attr("class","");
-		$("#dashboard-btn").attr("class","active");
-	});
+
+	//$("#dashboard-btn").click(function() {	  
+		//$('#page-content').load('pages/index.html');  		
+		//$("#profile-btn").attr("class","");
+		//$("#dashboard-btn").attr("class","active");
+	//}); 
 
 	$("#profile-btn").click(function() {	  
 		$('#page-content').load('pages/profile.html');		
