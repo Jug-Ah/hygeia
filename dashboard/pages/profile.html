@@ -1,8 +1,4 @@
-<script>
-$("#edit-profile-btn").click(function() {   
-    $('#page-content').load('pages/edit-profile.html');     
-  });
-</script>
+
 
       <div class="row">
       
@@ -11,7 +7,7 @@ $("#edit-profile-btn").click(function() {
         <br/><br/><br/>
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title">Sheena Kristin A.Eschor</h3>
+              <h3 id="complete-name" class="panel-title"></h3>
             </div>
             <div class="panel-body">
               <div class="row">
@@ -34,24 +30,25 @@ $("#edit-profile-btn").click(function() {
                     <tbody>                      
                       <tr>
                         <td>Date of Birth</td>
-                        <td>01/24/1988</td>
+                        <td id="bday"></td>
                       </tr>
                    
                          <tr>
                              <tr>
                         <td>Gender</td>
-                        <td>Male</td>
+                        <td id="gender"></td>
                       </tr>
                         <tr>
                         <td>Home Address</td>
-                        <td>Metro Manila,Philippines</td>
+                        <td><!-- Metro Manila,Philippines --></td>
                       </tr>
                       <tr>
                         <td>Email</td>
-                        <td><a href="mailto:info@support.com">info@support.com</a></td>
+                        <td><a id="email" href=""></a></td>
                       </tr>
                         <td>Phone Number</td>
-                        <td>123-4567-890(Landline)<br><br>555-4567-890(Mobile)
+                        <td>
+                        <!-- 123-4567-890(Landline)<br><br>555-4567-890(Mobile) -->
                         </td>
                            
                       </tr>
