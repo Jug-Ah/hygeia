@@ -6,15 +6,13 @@ import simplejson as json
 def index(req, userID):
 	userID = cgi.escape(userID)
 	
-	x = doSql()
-	ret = []
-	res = x.execqry("select * from personalinfo where userid = '" + userID + "';", True)
-	ret.append(res)
-	
-	res = x.execqry("select email from useraccount where userid = '" + userID + "';", True)
-	ret.append(res)
+	x = doSql()	
+	res = x.execqry("select personalinfo.fullname, personalinfo.birthday, personalinfo.gender, useraccount.email FROM personalinfo, useraccount where personalinfo.userid = '" + userID + "' and useraccount.userid ='" + userID + "';", True)	
 
-	
-	
+	result = []
+	for a in res:
+		stringed = map(str, a)
+		result.append(stringed)
 
-	return json.dumps(ret)
+	return json.dumps(result)
+	
