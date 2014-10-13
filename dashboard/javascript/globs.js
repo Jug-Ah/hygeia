@@ -30,9 +30,20 @@ $(document).ready(function () {
 	$("#edit-profile-btn").click(function() {	  
 		$('#page-content').load('pages/edit-profile.html');			
 	});
+	
+	$("#fitnessplan-btn").click(function() {
+		$('#page-content').load('pages/fitnessplan.html');
+		$("#fitnessplan-btn").attr("class","active");
+		$("#dashboard-btn").attr("class","");		
+		loadPersonalPlan()
+	});
 
-
-
+	$("#progressrecord-btn").click(function() {
+		$('#page-content').load('pages/progressrecord.html');
+		$("#progressrecord-btn").attr("class","active");
+		$("#dashboard-btn").attr("class","");		
+		loadPersonalRecord()
+	});
   
 	
 });
@@ -60,10 +71,68 @@ function loadProfile()
 				var email = res[0][3]
 				
                 $("#complete-name").html(name);
-                $("#bday").html(bday);
+                $("#bDay").html(bday);
                 $("#gender").html(gender);                
                 document.getElementById("email").innerHTML = email;
                 document.getElementById("email").href = "mailto:" + email;                
               }
     });  	
+}
+
+function loadPersonalPlan() {
+  $.ajax({
+      url: "http://localhost/hygeia/scripts/getpersonalfitnessplan.py",
+      data: {userID:sessionStorage.id},
+      dataType: 'json',
+      success: function (res) {
+                  var EPlan = res[0][0];
+                  var DPlan = res[0][1];
+
+
+                  $("#ExPlan").html(EPlan);
+                  $("#DiPlan").html(DPlan);
+              }
+    });
+}
+
+function loadPersonalRecord() {
+  $.ajax({
+      url: "http://localhost/hygeia/scripts/getprogressrecord.py",
+      data: {userID:sessionStorage.id},
+      dataType: 'json',
+		success: function (res) {
+                  console.log(res);
+                  if(res[0][0] != "None")
+                  {
+				      table = '<div class="table-responsive">';
+					  table += '<table class="table table-condensed">';
+					  table += '<thead>' +
+					           '<tr>' +
+							     '<th>Height</th>' +
+								 '<th>Weight</th>' +
+								 '<th>BMI</th>' +
+								 '<th>Health Status</th>' +
+								 '<th>Age</th>' +
+								 '<th>Age Bracket</th>' +
+								 '<th>Change Percentage</th>' +
+							   '</tr>' +
+					           '</thead>';
+					  table += "<tbody>";		   
+					  for (i = 0; i < res.length; i++)
+					  {
+						  row = res[i];
+						  table += "<tr>";
+						  for (j = 0; j < row.length; j++)
+						  {
+							  table += "<td>" + row[j] + "</td>";
+						  }
+						  table += "</tr>";
+					  }
+					  table += "</tbody>";
+					  table += "</table>";
+					  table += "</div>";
+					  $("#target").html(table); 
+				  }
+              }
+    });
 }
