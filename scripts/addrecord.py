@@ -12,9 +12,11 @@ def index(req, userID, height, weight):
 	status = h_status(bmi)
 	
 	set = doSql()
-	perc = 0 #find a way to create a function that extracts the prev. bmi
+	
 	birthday = set.execqry("select birthday from personalinfo where userID = " + userID + ";", False)[0][0]
 	age = set.execqry("select extract(year from age(timestamp '" + birthday + "'));", False)[0][0]
+	prev_bmi = set.execqry("select bmi from progressrecord where userID = " + userID + ";", False)[-1][0]
+	perc = change_perc(float(bmi), float(prev_bmi))
 	
 	agebracket = bracket(int(age))
 	
