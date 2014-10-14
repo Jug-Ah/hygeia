@@ -1,5 +1,5 @@
 //define functions and global variables here...
-var siteloc = "http://localhost/dashboard2";
+var siteloc = "http://localhost/dashboard";
 var scriptloc = "/scripts/";
 
 
@@ -14,10 +14,15 @@ $(document).ready(function () {
 	loadProfile()
 
 
+	//$("#dashboard-btn").click(function() {	  
+		//$('#page-content').load('pages/index.html');  		
+		//$("#profile-btn").attr("class","");
+		//$("#dashboard-btn").attr("class","active");
+	//}); 
 
 	$("#profile-btn").click(function() {	  
 		$('#page-content').load('pages/profile.html');		
-		$("#profile-btn").attr("class","active-menu");
+		$("#profile-btn").attr("class","active");
 		$("#fitnessplan-btn").attr("class","");		
 		$("#progressrecord-btn").attr("class","");		
 		loadProfile()
@@ -30,7 +35,7 @@ $(document).ready(function () {
 	$("#fitnessplan-btn").click(function() {
 		$('#page-content').load('pages/fitnessplan.html');
 		$("#profile-btn").attr("class","");
-		$("#fitnessplan-btn").attr("class","active-menu");
+		$("#fitnessplan-btn").attr("class","active");
 		$("#progressrecord-btn").attr("class","");		
 		loadPersonalPlan()
 	});
@@ -39,7 +44,7 @@ $(document).ready(function () {
 		$('#page-content').load('pages/progressrecord.html');		
 		$("#profile-btn").attr("class","");
 		$("#fitnessplan-btn").attr("class","");
-		$("#progressrecord-btn").attr("class","active-menu");
+		$("#progressrecord-btn").attr("class","active");
 		loadPersonalRecord()
 	});
   
