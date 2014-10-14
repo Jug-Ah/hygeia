@@ -279,3 +279,17 @@ function setdate(){
 	inputhtml =  "Last access : " + dt.formats.constants.silver + ' &nbsp; <a onclick="return logout();" class="btn btn-danger square-btn-adjust">Logout</a> ';
 	$("#date").html(inputhtml);
 }
+
+function addrecord() {
+  $.ajax({
+		url: siteloc + scriptloc + "addrecord.py",
+		data: {userID:sessionStorage.id, 
+			height:$("#height").val(), 
+			weight:$("#weight").val()},
+		async: true,
+		dataType: 'json',
+		success: function (res) {
+					console.log("Successfully added progress record.");
+              }
+    });
+}
