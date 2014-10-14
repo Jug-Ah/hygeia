@@ -139,3 +139,17 @@ function loadPersonalRecord() {
               }
     });
 }
+
+function addrecord() {
+  $.ajax({
+		url: siteloc + scriptloc + "addrecord.py",
+		data: {userID:sessionStorage.id, 
+			height:$("#height").val(), 
+			weight:$("#weight").val()},
+		async: true,
+		dataType: 'json',
+		success: function (res) {
+					console.log("Successfully added progress record.");
+              }
+    });
+}

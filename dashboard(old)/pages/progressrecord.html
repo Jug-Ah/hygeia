@@ -17,10 +17,25 @@
 			
 
 			<div class="panel-footer">
-                        <span class="pull-right">
-                            <a href="pages/addrecord.html" type="button" class="btn btn-sm btn-warning">Add new record</a>
-                        </span>
-						<br/><br/>
+                        <form class="center form" id="form-userrecord" method="post" action="javascript: addrecord(); ">
+									<div class="control-group">
+										<div class="controls"> <div class="row">
+											<div class="col-md-6"> 
+												<div class="controls">
+													<label class="control-label" for="height">Height</label>
+													<input size="50" name="height" id="height" value="" type="text" class="form-control" placeholder="In Centimeters">
+												</div> <br>
+											</div> 
+											<div class="col-md-6">
+												<div class="controls">
+													<label class="control-label" for="weight">Weight</label>
+													<input size="50" name="weight" id="weight" value="" type="text" class="form-control" placeholder="In Kilograms">
+												</div> <br>
+											</div> </div> 
+										</div>
+									</div>
+									<button name="submit" id="formulate" value="" type="submit" class="btn btn-primary btn-block">Add record</button>
+								</form>
 			</div>
 		  
           </div>
