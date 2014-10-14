@@ -279,9 +279,10 @@ function addprogressrecord() {
 		dataType: 'json',
 		success: function (res) {
 					console.log("Successfully added progress record.");
+					fetchprogresshistoryof();
               }
     });
-  	fetchprogresshistoryof();
+  	
 	$('#formulate').prop('disabled',true);
 	$('#height').prop('disabled',true);
 	$('#weight').prop('disabled',true);
