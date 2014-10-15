@@ -150,3 +150,16 @@ function addrecord() {
     });
 	loadPersonalRecord()
 }
+
+function updatepersonalplan() {
+  $.ajax({
+      url: "http://localhost/hygeia/scripts/updateplan.py",
+      data: {userID:sessionStorage.id},
+	  async: true,
+      dataType: 'json',
+      success: function (res) {
+					console.log("Successfully updated personal fitness plan.");
+              }
+    });
+  	loadPersonalPlan()
+}
