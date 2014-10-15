@@ -14,7 +14,7 @@ def h_status(bmi):
 		return 'overweight'
 
 def change_perc(c_bmi, p_bmi):
-	perc = (c_bmi - p_bmi) / p_bmi
+	perc = ((c_bmi - p_bmi) / p_bmi) * 100
 	return round(perc,2)
 
 def bracket(age):
