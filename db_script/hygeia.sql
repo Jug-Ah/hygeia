@@ -163,6 +163,19 @@ $$
   end;
 $$
   language 'plpgsql';
+  
+create or replace 
+    function update_personalfitnessplan(p_userId int, p_personalDietPlan text, p_personalExercisePlan text)
+    returns text as
+$$
+  begin
+          update personalfitnessplan
+		  set personalDietPlan = $2, personalExercisePlan = $3
+		  where userId = $1;
+      return 'OK';
+  end;
+$$
+  language 'plpgsql';
 
 
 create or replace function
@@ -188,3 +201,17 @@ $$
   end
 $$ 
   language 'plpgsql';
+
+CREATE OR REPLACE FUNCTION login_check(text, text)
+  RETURNS boolean AS
+  
+$func$
+declare 
+ret boolean;
+curr text;
+BEGIN
+   SELECT password FROM useraccount WHERE username = $1 INTO curr;
+   SELECT password = crypt($2, curr) FROM useraccount where username = $1 INTO ret;   
+   return ret;
+END
+$func$ LANGUAGE plpgsql;
