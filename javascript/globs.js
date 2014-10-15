@@ -469,8 +469,8 @@ function fetchpersonalplan() {
       data: {userID:sessionStorage.id},
       dataType: 'json',
       success: function (res) {
-                  var EPlan = res[0][0];
-                  var DPlan = res[0][1];
+                  var EPlan = res[0][1];
+                  var DPlan = res[0][0];
 
 
                   $("#ExPlan").html(EPlan);
