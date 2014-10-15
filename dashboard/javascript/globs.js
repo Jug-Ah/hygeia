@@ -110,10 +110,10 @@ function loadPersonalRecord() {
 							     '<th>Height</th>' +
 								 '<th>Weight</th>' +
 								 '<th>BMI</th>' +
-								 '<th>Health Status</th>' +
+								 '<th>Status</th>' +
 								 '<th>Age</th>' +
-								 '<th>Age Bracket</th>' +
-								 '<th>Change Percentage</th>' +
+								 '<th>Bracket</th>' +
+								 '<th>Change %</th>' +
 							   '</tr>' +
 					           '</thead>';
 					  table += "<tbody>";		   
