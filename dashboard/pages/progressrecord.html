@@ -1,3 +1,29 @@
+<script language='javascript'>
+	$(document).ready(function () {
+	$('#form-userrecord').validate({
+	            rules: {
+	                height: {
+	                    minlength: 2,
+	                    maxlength: 3,
+	                    required: true,
+	                    digits: true
+	                },
+	                weight: {
+	                    minlength: 2,
+	                    maxlength: 3,
+	                    required: true,
+	                    digits: true
+	                },
+	             },
+	            highlight: function (element) {
+	                $(element).closest('.controls').addClass('has-error');
+	            },
+	            success: function (element) {
+	                $(element).closest('.controls').removeClass('has-error');
+	            }
+	        });
+	});
+</script>
 
 
       <div class="row">
