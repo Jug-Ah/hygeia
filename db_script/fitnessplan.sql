@@ -13,10 +13,14 @@ create table fitnessplan(
 -- x=underweight, y=normal, z=overweight
 
 insert into fitnessplan(gender, ageBracket, healthStatus, exercisePlan, dietPlan)
-   values ('male', 'teen', 'underweight', 'exercise plan 1ax', 'diet plan 1ax'),
+   values ('male', 'teen', 'underweight',
+   'Do any of the following exercise at least 3 times a week, 60 minutes each | Running | Swimming | Cycling | Push-ups | Sit-ups | Running',
+   'At least once a day, 7 times a week | Fat-free or low-fat milk - 24 ounces | Meats/proteins - 5 ounces | Fruits - 1.5 cups | Vegetables - 2.5 cups | Grains - at least 6 ounces | Fiber - 31 grams'),
    ('male', 'teen', 'normal', 'exercise plan 1ay', 'diet plan 1ay'),
    ('male', 'teen', 'overweight', 'exercise plan 1az', 'diet plan 1az'),
-   ('female', 'teen', 'underweight', 'exercise plan 2ax', 'diet plan 2ax'),
+   ('female', 'teen', 'underweight',
+   'Do any of the following exercise at least 3 times a week, 60 minutes each | Running | Sit-ups | Dancing | Running | Walking | Cycling',
+   'At least once a day, 7 times a week | Fat-free or low-fat milk - 24 ounces | Meats/proteins - 5 ounces | Fruits - 1.5 cups | Vegetables - 2 cups |Grains - at least 5 ounces | Fiber - 26 grams'),
    ('female', 'teen', 'normal', 'exercise plan 2ay', 'diet plan 2ay'),
    ('female', 'teen', 'overweight', 'exercise plan 2az', 'diet plan 2az'),
    ('male', 'young_adult', 'underweight', 'exercise plan 1bx', 'diet plan 1bx'),
