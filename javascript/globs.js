@@ -459,33 +459,10 @@ function generatefitnessplan() {
 					console.log("Successfully added personal fitness plan.");
               }
     });
-  	fetchpersonalplan();
+  	$('#Plan').collapse('show');
   	$('#generate').prop('disabled',true);
 }
 
-function fetchpersonalplan() {
-  $.ajax({
-      url: siteloc + scriptloc + "getpersonalfitnessplan.py",
-      data: {userID:sessionStorage.id},
-      dataType: 'json',
-      success: function (res) {
-                var EPlan = res[0];
-                var DPlan = res[1];
-
-                ePlan_table = '<table>';					
-				for (j = 0; j < EPlan.length; j++)
-				{
-					table += "<tr><td>" + EPlan[j] + "</td></tr>";
-				}
-				ePlan_table += "</table>";
-				alert(ePlan_table);
-
-                $("#ExPlan").html(ePlan_table);
-                $("#DiPlan").html(DPlan);
-              }
-    });
-  	$('#Plan').collapse('show');
-}
 
 
 function successregister(){

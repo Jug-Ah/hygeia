@@ -59,7 +59,7 @@ create table progressrecord  (
   userID int references useraccount(userid),
   height decimal(5,2),
   weight decimal(5,2),
-  bmi decimal(4,2),
+  bmi decimal(5,2),
   healthStatus text,
   age int,
   ageBracket text,
