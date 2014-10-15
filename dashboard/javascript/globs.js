@@ -146,9 +146,10 @@ function addrecord() {
 		dataType: 'json',
 		success: function (res) {
 					console.log("Successfully added progress record.");
+          loadPersonalRecord();
               }
     });
-	loadPersonalRecord()
+	
 }
 
 function updatepersonalplan() {
