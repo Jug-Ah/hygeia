@@ -8,7 +8,7 @@ var scriptloc = "/scripts/";
 
 $(document).ready(function () {		
 	
-	if (sessionStorage.id == ""){
+	if (sessionStorage.id == "" || sessionStorage.id == undefined){
 		alert("Session expired. Please re-login.");
 		window.location = "http://localhost/Hygeia/";
 

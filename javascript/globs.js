@@ -479,3 +479,8 @@ function fetchpersonalplan() {
     });
   	$('#Plan').collapse('show');
 }
+
+function successregister(){
+	alert("You have successfully registered to Hygeia. You can now login!");
+	window.location = "http://localhost/Hygeia/";
+}
