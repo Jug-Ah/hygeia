@@ -148,4 +148,5 @@ function addrecord() {
 					console.log("Successfully added progress record.");
               }
     });
+	loadPersonalRecord()
 }
