@@ -113,6 +113,17 @@ function loadProfile()
     });  	
 }
 
+<<<<<<< HEAD
+=======
+function loadPersonalPlan() {
+  $.ajax({
+      url: "http://localhost/hygeia/scripts/getpersonalfitnessplan.py",
+      data: {userID:sessionStorage.id},
+      dataType: 'json',
+      success: function (res) {
+                  var EPlan = res[0][1];
+                  var DPlan = res[0][0];
+>>>>>>> origin/master
 
 
 function loadPersonalRecord() {

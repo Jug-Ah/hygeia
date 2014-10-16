@@ -14,7 +14,7 @@ def index(req, userID):
 	exercise_plan = set.execqry("select exerciseplan from fitnessplan where gender = '" + gender + "' and agebracket = '" + age_bracket + "' and healthstatus = '" + health_bracket + "';", False)[0][0]
 	diet_plan = set.execqry("select dietplan from fitnessplan where gender = '" + gender + "' and agebracket = '" + age_bracket + "' and healthstatus = '" + health_bracket + "';", False)[0][0]
 	
-	rec = set.execqry("select set_personalfitnessplan('" + userID + "', '" + exercise_plan + "', '" + diet_plan + "');", True)
+	rec = set.execqry("select set_personalfitnessplan('" + userID + "', '" + diet_plan + "', '" + exercise_plan + "');", True)
 	result = []
 	for a in rec:
 		stringed = map(str, a)
