@@ -32,7 +32,7 @@ $(document).ready(function () {
             $("#profile-btn").attr("class","");
             $("#fitnessplan-btn").attr("class","active");
             $("#progressrecord-btn").attr("class","");      
-            loadPersonalPlan()
+            loadPersonalPlan();
         });
 
         $("#progressrecord-btn").click(function() {
@@ -46,6 +46,41 @@ $(document).ready(function () {
     }  
 	
 });
+
+
+function loadPersonalPlan() {
+  $.ajax({
+      url: siteloc + scriptloc + "getpersonalfitnessplan.py",
+      data: {userID:sessionStorage.id},
+      dataType: 'json',
+      success: function (res) {
+        
+        var EPlan = res[0];
+        var DPlan = res[1];
+        
+        ePlan_table = '<table>';          
+        for (j = 0; j < EPlan.length; j++)
+        {
+          ePlan_table += "<tr><td>" + EPlan[j] + "</td></tr>";
+        }
+        ePlan_table += "</table>";
+
+        
+        dPlan_table = '<table>';          
+        for (j = 0; j < DPlan.length; j++)
+        {
+          dPlan_table += "<tr><td>" + DPlan[j] + "</td></tr>";
+        }
+        dPlan_table += "</table>";
+        
+
+        $("#ExPlan").html(ePlan_table);
+        $("#DiPlan").html(dPlan_table);
+      }
+
+    });
+    
+}
 
 
 function logout()
@@ -78,21 +113,7 @@ function loadProfile()
     });  	
 }
 
-function loadPersonalPlan() {
-  $.ajax({
-      url: "http://localhost/hygeia/scripts/getpersonalfitnessplan.py",
-      data: {userID:sessionStorage.id},
-      dataType: 'json',
-      success: function (res) {
-                  var EPlan = res[0][0];
-                  var DPlan = res[0][1];
 
-
-                  $("#ExPlan").html(EPlan);
-                  $("#DiPlan").html(DPlan);
-              }
-    });
-}
 
 function loadPersonalRecord() {
   $.ajax({

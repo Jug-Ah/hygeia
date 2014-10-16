@@ -469,16 +469,24 @@ function fetchpersonalplan() {
       data: {userID:sessionStorage.id},
       dataType: 'json',
       success: function (res) {
-                  var EPlan = res[0][0];
-                  var DPlan = res[0][1];
+                var EPlan = res[0];
+                var DPlan = res[1];
 
+                ePlan_table = '<table>';					
+				for (j = 0; j < EPlan.length; j++)
+				{
+					table += "<tr><td>" + EPlan[j] + "</td></tr>";
+				}
+				ePlan_table += "</table>";
+				alert(ePlan_table);
 
-                  $("#ExPlan").html(EPlan);
-                  $("#DiPlan").html(DPlan);
+                $("#ExPlan").html(ePlan_table);
+                $("#DiPlan").html(DPlan);
               }
     });
   	$('#Plan').collapse('show');
 }
+
 
 function successregister(){
 	alert("You have successfully registered to Hygeia. You can now login!");

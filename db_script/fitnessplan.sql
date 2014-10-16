@@ -33,7 +33,7 @@ insert into fitnessplan(gender, ageBracket, healthStatus, exercisePlan, dietPlan
    'At least once a day, 7 times a week | Vegetables | Whole grains | Fat-free or low-fat milk | Protein foods'),
    ('male', 'young_adult', 'underweight',
    'Do any of the following exercises at least 3 times a week | Squat 30 minutes | Bench Press 30 minutes | Stiff Leg Deadlift 30 minutes | Seated Overhead Barbell Press 30 minutes | Bent Over Row 30 minutes | Skullcrushers	30 minutes | Pull Ups/Lat Pull Down 30 minutes | Dumbbell Curl 30 minutes',
-   'At least once a day, 7 times a week | Grains - 7 ounces | Vegetables - 3 cups | Dark green veggies - 2 cups | Red and orange veggies - 6 cups | Beans and peas - 2 cups | Starchy veggies - 6 cups | Fruits - 2 cups | Dairy - 3 cups | Protein - 6 ounces',)
+   'At least once a day, 7 times a week | Grains - 7 ounces | Vegetables - 3 cups | Dark green veggies - 2 cups | Red and orange veggies - 6 cups | Beans and peas - 2 cups | Starchy veggies - 6 cups | Fruits - 2 cups | Dairy - 3 cups | Protein - 6 ounces'),
    ('male', 'young_adult', 'normal',
    'Do any of the following exercises at least 3 times a week | Box jumps - 30 minutes | Walking lunges with heavy sandbag - 30 minutes | Towel pull ups - 30 minutes | AMAP Kettlebell swings - 30 minutes | Bear crawl - 30 minutes | Yards Keg clean and press - 30 minutes',
    'At least once a day, 7 times a week | Whole grains | Dark green veggies | Red and orange veggies | Beans and  peas | Starchy veggies'),
