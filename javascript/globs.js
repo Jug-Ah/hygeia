@@ -253,9 +253,9 @@ function fetchprogresshistoryof() {
       data: {userID:sessionStorage.id},
       dataType: 'json',
       success: function (res) {
-                  var agebracket = "Your are " + res[0][5];
-                  var healthstatus = "You are " + res[0][3];
-                  var gender = "You are " + sessionStorage.gender;
+                  var agebracket = res[0][5];
+                  var healthstatus = res[0][3];
+                  var gender = sessionStorage.gender;
 
                   $("#AgeStats").html(agebracket);
                   $("#ClassStats").html(healthstatus);
@@ -466,6 +466,5 @@ function generatefitnessplan() {
 
 
 function successregister(){
-	alert("You have successfully registered to Hygeia. You can now login!");
 	window.location = "http://localhost/Hygeia/";
 }

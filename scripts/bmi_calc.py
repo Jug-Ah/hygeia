@@ -21,6 +21,6 @@ def bracket(age):
 	if age < 20:  
 		return 'teen'
 	elif age >= 20 and age <= 29:
-		return 'young_adult'
+		return 'young adult'
 	elif age > 29:
 		return 'adult'

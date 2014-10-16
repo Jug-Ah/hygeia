@@ -58,18 +58,21 @@ function loadPersonalPlan() {
         var EPlan = res[0];
         var DPlan = res[1];
         
-        ePlan_table = '<table>';          
-        for (j = 0; j < EPlan.length; j++)
+        ePlan_table = '<table>';
+        ePlan_table += '<thead><strong><center>' + EPlan[0] + '</center></strong></thead><br>'
+                 
+        for (j = 1; j < EPlan.length; j++)
         {
-          ePlan_table += "<tr><td>" + EPlan[j] + "</td></tr>";
+          ePlan_table += "<tr><td><ul><li>" + EPlan[j] + "</li></ul></td></tr>";
         }
         ePlan_table += "</table>";
 
         
-        dPlan_table = '<table>';          
-        for (j = 0; j < DPlan.length; j++)
+        dPlan_table = '<table>';
+        dPlan_table +=  '<thead><strong><center>' + DPlan[0] + '</center></strong></thead><br>'         
+        for (j = 1; j < DPlan.length; j++)
         {
-          dPlan_table += "<tr><td>" + DPlan[j] + "</td></tr>";
+          dPlan_table += "<tr><td><ul><li>" + DPlan[j] + "</li></ul></td></tr>";
         }
         dPlan_table += "</table>";
         
@@ -167,6 +170,8 @@ function addrecord() {
 		dataType: 'json',
 		success: function (res) {
 					console.log("Successfully added progress record.");
+					$("#height").val('');
+					$("#weight").val('');
           loadPersonalRecord();
               }
     });
@@ -181,7 +186,8 @@ function updatepersonalplan() {
       dataType: 'json',
       success: function (res) {
 					console.log("Successfully updated personal fitness plan.");
+					loadPersonalPlan()
               }
     });
-  	loadPersonalPlan()
+  	
 }
