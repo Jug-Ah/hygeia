@@ -3,7 +3,14 @@
 	$('#form-userrecord').validate({
 	            rules: {
 	                height: {
-	                    minlength: 2,
+						remote: {
+								url: "http://localhost/hygeia/scripts/checkheight.py",
+								data: {userID: sessionStorage.id,
+									   height: function() {
+										return $("#height").val();}
+								}
+						},
+						minlength: 2,
 	                    maxlength: 3,
 	                    required: true,
 	                    digits: true
@@ -15,6 +22,11 @@
 	                    digits: true
 	                },
 	             },
+				messages: {
+					height: {
+						remote: "Invalid height"
+					}
+				},
 	            highlight: function (element) {
 	                $(element).closest('.controls').addClass('has-error');
 	            },
