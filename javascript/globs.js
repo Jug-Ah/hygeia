@@ -469,13 +469,8 @@ function fetchpersonalplan() {
       data: {userID:sessionStorage.id},
       dataType: 'json',
       success: function (res) {
-<<<<<<< HEAD
                 var EPlan = res[0];
                 var DPlan = res[1];
-=======
-                  var EPlan = res[0][1];
-                  var DPlan = res[0][0];
->>>>>>> origin/master
 
                 ePlan_table = '<table>';					
 				for (j = 0; j < EPlan.length; j++)
